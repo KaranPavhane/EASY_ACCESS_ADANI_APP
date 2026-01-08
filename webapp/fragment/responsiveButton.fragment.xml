@@ -1,0 +1,10 @@
+<!--<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"-->
+<!--	xmlns:core="sap.ui.core">-->
+<!--	<Button text="Role"></Button> -->
+<!--	<Button text="System"></Button>-->
+<!--</core:FragmentDefinition>-->
+<ActionSheet id="actionSheet" xmlns="sap.m" xmlns:core="sap.ui.core" 
+	title="Choose Your Action" showCancelButton="true" placement="Bottom">
+	<Button text="Role"></Button>
+	<Button text="System" press="responsiveSystemButPress"></Button>
+</ActionSheet>

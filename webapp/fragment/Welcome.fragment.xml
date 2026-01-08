@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	xmlns:goals="sap.uxap.sample.SharedBlocks.goals" xmlns:u="sap.ui.unified" xmlns:dnd="sap.ui.core.dnd" xmlns:uxap="sap.uxap"
+	xmlns:core="sap.ui.core" xmlns:t="sap.ui.table">
+	<!--<Panel headerText="User Details" expandable="true" expanded="true">-->
+	<Page class="sapUiSizeCompact" title="Welcome to My Access" titleLevel="H1" backgroundDesign="Transparent" floatingFooter="true"
+		showFooter="true">
+		<content width="90%">
+			<VBox justifyContent="Center" alignItems="Center">
+				<Text text="{i18n>welcomeText}"/>
+				<Button text="Show me my existing access" enabled="true" press="onMyAccessPress"/>
+			</VBox>
+		</content>
+	</Page>
+</core:FragmentDefinition>

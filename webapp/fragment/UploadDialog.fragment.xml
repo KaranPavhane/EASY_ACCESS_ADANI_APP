@@ -1,0 +1,21 @@
+<core:FragmentDefinition controllerName="inforUI.controller.Upload" xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog id="helloDialog" title="Upload Document">
+		<content>
+			<form:SimpleForm>
+				<form:content>
+					<VBox>
+						<Label text="Select file"></Label>
+						<u:FileUploader id="idfileUploader"  sameFilenameAllowed="false" buttonText="" 
+							placeholder="Choose a excel file" style="Emphasized" fileType="css,html,htm,txt,rtx,xml,gif,ief,jpeg,jpg,jpe,xwd,tiff,tif,bmp,ico,pdf,doc,docx,ppt,pptx,png,cvv,xls,xlsx,xlt,csv,bmp,xlc,xla,xps,eml,oft,msg" ></u:FileUploader>
+						<!--<u:FileUploader id="FileUploaderId" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"-->
+						<!--		icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUploadEx1cel"/>-->
+					</VBox>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+		<buttons>
+		<Button text="Upload" press="onUploadExcelNew"/>
+         <Button text="Cancel" press="onUploadCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,288 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="TNOW.GRAC_ARM_ACMNG_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="Personnel" sap:content-version="1">
+				<Key><PropertyRef Name="USER_ID"/></Key><Property Name="USER_ID" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="User ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FIRST_NAME" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="User Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LAST_NAME" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="User Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZRMNAME" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Reporting Manager Na"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZRMRMID" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="RM's RM ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZDEPTD" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Department Descripti"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PHONE" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Telephone No." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EMAIL" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Telephone No." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZEMPID" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="User ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="USERALIAS" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Alias" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EMPTYPE" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Employee Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="VENDORNAME" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="User Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="FirefighterRequestSet" Relationship="TNOW.GRAC_ARM_ACMNG_SRV.ToFirefighterRequest"
+					FromRole="FromRole_ToFirefighterRequest" ToRole="ToRole_ToFirefighterRequest"/><NavigationProperty Name="RemoveAccessRequestSet" Relationship="TNOW.GRAC_ARM_ACMNG_SRV.ToRemoveAccessRequest"
+					FromRole="FromRole_ToRemoveAccessRequest" ToRole="ToRole_ToRemoveAccessRequest"/><NavigationProperty Name="NewUserRequestSet" Relationship="TNOW.GRAC_ARM_ACMNG_SRV.ToNewUserRequest" FromRole="FromRole_ToNewUserRequest"
+					ToRole="ToRole_ToNewUserRequest"/><NavigationProperty Name="FirefighterSet" Relationship="TNOW.GRAC_ARM_ACMNG_SRV.ToFirefighter" FromRole="FromRole_ToFirefighter"
+					ToRole="ToRole_ToFirefighter"/><NavigationProperty Name="SystemSet" Relationship="TNOW.GRAC_ARM_ACMNG_SRV.ToSystem" FromRole="FromRole_ToSystem" ToRole="ToRole_ToSystem"/></EntityType>
+			<EntityType Name="System" sap:content-version="1">
+				<Key><PropertyRef Name="USER_ID"/></Key><Property Name="CONNECTOR" Type="Edm.String" MaxLength="32" sap:unicode="false" sap:label="Destination" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RFCDOC1" Type="Edm.String" Nullable="false" MaxLength="72" sap:unicode="false" sap:label="Descr." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="USER_ID" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="User ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="USER_GROUP" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="User Group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="USER_TYPE" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="User Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="INACTIVE" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Boolean Variable (X=true, -=false, space=unknown)"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EXPIRED" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Boolean Variable (X=true, -=false, space=unknown)"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="VALID_FROM" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid From" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="VALID_TO" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid To" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="STATUS" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="System Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Firefighter" sap:content-version="1">
+				<Key><PropertyRef Name="FF_USER"/></Key><Property Name="APP_TYPE" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Application Typ" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FFOBJECT" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="User Role" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CONNECTOR" Type="Edm.String" MaxLength="32" sap:unicode="false" sap:label="Target Connector" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FF_USER" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Firefighter" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="OWNER" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Owner ID" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="LOGGED" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Indic." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CRITICALITY" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Criticality" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="VALID_FROM" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Valid From"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="VALID_TO" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Valid To" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="UPDATED_BY" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Updated By" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="UPDATED_ON" Type="Edm.Int64" sap:unicode="false" sap:label="Last Updated" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="NewUserRequest" sap:content-version="1">
+				<Key><PropertyRef Name="CREATED_BY"/><PropertyRef Name="SYSTEMS"/><PropertyRef Name="REQTYPE"/></Key><Property Name="CREATED_BY" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By User"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SYSTEMS" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Target Connector"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EXTERNAL_KEY_DIS" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="External Key Displ." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="INSTANCE_STATUS" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Instance Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CREATED_AT" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQTYPE" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Request Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="USER_NAME" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="User Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQDSCN" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQ_ID" Type="Edm.String" MaxLength="32" sap:unicode="false" sap:label="GUID" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="FNAME" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="First Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LNAME" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Last Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="INSTANCE_ID" Type="Edm.String" MaxLength="32" sap:unicode="false" sap:label="MSMP Instance ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQNO" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Request Number" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="RemoveAccessRequest" sap:content-version="1">
+				<Key><PropertyRef Name="CREATED_BY"/></Key><Property Name="CREATED_BY" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By User"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EXTERNAL_KEY_DIS" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="External Key Displ." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="INSTANCE_STATUS" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Instance Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CREATED_AT" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQTYPE" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Request Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="USER_NAME" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="User Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQDSCN" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQ_ID" Type="Edm.String" MaxLength="32" sap:unicode="false" sap:label="GUID" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="FNAME" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="First Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LNAME" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Last Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="INSTANCE_ID" Type="Edm.String" MaxLength="32" sap:unicode="false" sap:label="MSMP Instance ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQNO" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Request Number" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="FirefighterRequest" sap:content-version="1">
+				<Key><PropertyRef Name="CREATED_BY"/></Key><Property Name="CREATED_BY" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By User"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EXTERNAL_KEY_DIS" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="External Key Displ." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="INSTANCE_STATUS" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Instance Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CREATED_AT" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQTYPE" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Request Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="USER_NAME" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="User Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQDSCN" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQ_ID" Type="Edm.String" MaxLength="32" sap:unicode="false" sap:label="GUID" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="FNAME" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="First Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LNAME" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Last Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="INSTANCE_ID" Type="Edm.String" MaxLength="32" sap:unicode="false" sap:label="MSMP Instance ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REQNO" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Request Number" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Approvers" sap:content-version="1">
+				<Key><PropertyRef Name="CreatedBy"/></Key><Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By User"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="InstanceId" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="MSMP Instance ID"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ApproverUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Approver User"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NameTextc" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Full Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Time Stamp"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ApprovalInbox" sap:content-version="1">
+				<Key><PropertyRef Name="CreatedBy"/></Key><Property Name="Daysopen" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Integer" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ApproverUser" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Approver User" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="InstanceId" Type="Edm.String" MaxLength="32" sap:unicode="false" sap:label="MSMP Instance ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ExternalKeyDis" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="External Key Displ." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="InstanceStatus" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Instance Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By User"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreatedAt" Type="Edm.DateTime" Precision="11" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ExternalKey" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="External Key" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SystemForRequestDetails" sap:content-version="1">
+				<Key><PropertyRef Name="Reqno"/></Key><Property Name="Reqno" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Request Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReqId" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="GUID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Systems" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Target Connector"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ApproversForRequestDetails" sap:content-version="1">
+				<Key><PropertyRef Name="Reqno"/></Key><Property Name="InstanceId" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="MSMP Instance ID"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ApproverUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Approver User"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NameTextc" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Full Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Reqno" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Request Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="AllSystemLandscape" sap:content-version="1">
+				<Key><PropertyRef Name="Rfcdoc1"/><PropertyRef Name="Connector"/></Key><Property Name="Rfcdoc1" Type="Edm.String" Nullable="false" MaxLength="72" sap:unicode="false" sap:label="Descr." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Connector" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Target Connector"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="TCodeInfo" sap:content-version="1">
+				<Key><PropertyRef Name="USER_ID"/><PropertyRef Name="ACTION"/><PropertyRef Name="ACTION_ID"/></Key><Property Name="USER_ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="User ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ACTION" Type="Edm.String" Nullable="false" MaxLength="300" sap:unicode="false" sap:label="Action" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ACTION_ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="GUID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CONNECTOR" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Target Connector"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DESCN" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="SubmitGRCRequest" sap:content-version="1">
+				<Key><PropertyRef Name="Userid"/></Key><Property Name="MsgReturn" Type="TNOW.GRAC_ARM_ACMNG_SRV.MsgReturn" Nullable="false"/><Property Name="RequestNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Request Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RequestId" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Object ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Userid" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Data Element of Type String" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="AllFirefighterId" sap:content-version="1">
+				<Key><PropertyRef Name="Ffobject"/></Key><Property Name="Ffobject" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="User Role" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ValidFrom" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Valid From"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Connector" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Target Connector"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ValidTo" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Valid To" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Assigndate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Last Updated"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Extend" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="EXTEND" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="NARUserInformation" sap:content-version="1">
+				<Key><PropertyRef Name="USER_ID"/></Key><Property Name="USER_ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="FIRST_NAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="First Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LAST_NAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Last Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EMPTYPE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Emp Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZRMID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Rep Manager" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZEMPID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Emp ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DEPARTMENT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Department" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PHONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Mobile" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="EMAIL" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Email" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="NARSystemInformationSet" Relationship="TNOW.GRAC_ARM_ACMNG_SRV.NARUserToSystems"
+					FromRole="FromRole_NARUserToSystems" ToRole="ToRole_NARUserToSystems"/><NavigationProperty Name="TCodeInfoSet" Relationship="TNOW.GRAC_ARM_ACMNG_SRV.NARUserToTcodes" FromRole="FromRole_NARUserToTcodes"
+					ToRole="ToRole_NARUserToTcodes"/><NavigationProperty Name="NARRoleInformationSet" Relationship="TNOW.GRAC_ARM_ACMNG_SRV.NARUserToRole" FromRole="FromRole_NARUserToRole"
+					ToRole="ToRole_NARUserToRole"/><NavigationProperty Name="NAROrgValueInformationSet" Relationship="TNOW.GRAC_ARM_ACMNG_SRV.NARUserToOrg" FromRole="FromRole_NARUserToOrg"
+					ToRole="ToRole_NARUserToOrg"/></EntityType>
+			<EntityType Name="NARSystemInformation" sap:content-version="1">
+				<Key><PropertyRef Name="USER_ID"/><PropertyRef Name="CONNECTOR"/><PropertyRef Name="ENVIRONMENT"/></Key><Property Name="USER_ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="User ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CONNECTOR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="System" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ENVIRONMENT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Environment" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RFCDOC1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="RFC Destination" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="NAROrgValueInformation" sap:content-version="1">
+				<Key><PropertyRef Name="USER_ID"/><PropertyRef Name="ACTION"/><PropertyRef Name="CONNECTOR"/></Key><Property Name="USER_ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="User ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ACTION" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Tcode" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="FIELDNAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Org Level" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CONNECTOR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="System" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="VTEXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Org Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="VALUE_FROM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="From Value" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="NARRoleInformation" sap:content-version="1">
+				<Key><PropertyRef Name="USER_ID"/><PropertyRef Name="CONNECTOR"/><PropertyRef Name="ROLE_ID"/></Key><Property Name="USER_ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="User ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TCODE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Tcode" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ORG_LEVEL" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Org Level" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FROM_VALUE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="From Value" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TO_VAUE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="To Value" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CONNECTOR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="System" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ROLE_ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Role ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ROLE_NAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Role Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RFCDOC1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="System Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ROLE_TYPE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Role Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ROLE_DESCN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RT_DESCN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="RT Descn" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="NARORGVALUEFROM" sap:content-version="1">
+				<Key><PropertyRef Name="PR_ORG"/><PropertyRef Name="VALUE1"/></Key><Property Name="PR_ORG" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Org. level" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="VALUE1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="From Value" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<ComplexType Name="MsgReturn"><Property Name="MsgNo" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="3-Byte field" sap:creatable="false" sap:updatable="false"
+				sap:sortable="false" sap:filterable="false"/><Property Name="MsgType" Type="Edm.String" Nullable="false" MaxLength="7" sap:label="Character field, length 7" sap:creatable="false"
+				sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="MsgStatement" Type="Edm.String" Nullable="false" sap:label="MSG_STATEMENT" sap:creatable="false" sap:updatable="false"
+				sap:sortable="false" sap:filterable="false"/></ComplexType>
+			<Association Name="NARUserToSystems" sap:content-version="1"><End Type="TNOW.GRAC_ARM_ACMNG_SRV.NARUserInformation" Multiplicity="1" Role="FromRole_NARUserToSystems"/><End Type="TNOW.GRAC_ARM_ACMNG_SRV.NARSystemInformation" Multiplicity="*" Role="ToRole_NARUserToSystems"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NARUserToSystems"><PropertyRef Name="USER_ID"/></Principal>
+					<Dependent Role="ToRole_NARUserToSystems"><PropertyRef Name="USER_ID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NARUserToTcodes" sap:content-version="1"><End Type="TNOW.GRAC_ARM_ACMNG_SRV.NARUserInformation" Multiplicity="1" Role="FromRole_NARUserToTcodes"/><End Type="TNOW.GRAC_ARM_ACMNG_SRV.TCodeInfo" Multiplicity="*" Role="ToRole_NARUserToTcodes"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NARUserToTcodes"><PropertyRef Name="USER_ID"/></Principal>
+					<Dependent Role="ToRole_NARUserToTcodes"><PropertyRef Name="USER_ID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NARUserToRole" sap:content-version="1"><End Type="TNOW.GRAC_ARM_ACMNG_SRV.NARUserInformation" Multiplicity="1" Role="FromRole_NARUserToRole"/><End Type="TNOW.GRAC_ARM_ACMNG_SRV.NARRoleInformation" Multiplicity="*" Role="ToRole_NARUserToRole"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NARUserToRole"><PropertyRef Name="USER_ID"/></Principal>
+					<Dependent Role="ToRole_NARUserToRole"><PropertyRef Name="USER_ID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="NARUserToOrg" sap:content-version="1"><End Type="TNOW.GRAC_ARM_ACMNG_SRV.NARUserInformation" Multiplicity="1" Role="FromRole_NARUserToOrg"/><End Type="TNOW.GRAC_ARM_ACMNG_SRV.NAROrgValueInformation" Multiplicity="*" Role="ToRole_NARUserToOrg"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NARUserToOrg"><PropertyRef Name="USER_ID"/></Principal>
+					<Dependent Role="ToRole_NARUserToOrg"><PropertyRef Name="USER_ID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ToSystem" sap:content-version="1"><End Type="TNOW.GRAC_ARM_ACMNG_SRV.Personnel" Multiplicity="1" Role="FromRole_ToSystem"/><End Type="TNOW.GRAC_ARM_ACMNG_SRV.System" Multiplicity="*" Role="ToRole_ToSystem"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ToSystem"><PropertyRef Name="USER_ID"/></Principal>
+					<Dependent Role="ToRole_ToSystem"><PropertyRef Name="USER_ID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ToFirefighter" sap:content-version="1"><End Type="TNOW.GRAC_ARM_ACMNG_SRV.Personnel" Multiplicity="1" Role="FromRole_ToFirefighter"/><End Type="TNOW.GRAC_ARM_ACMNG_SRV.Firefighter" Multiplicity="*" Role="ToRole_ToFirefighter"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ToFirefighter"><PropertyRef Name="USER_ID"/></Principal>
+					<Dependent Role="ToRole_ToFirefighter"><PropertyRef Name="FF_USER"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ToNewUserRequest" sap:content-version="1"><End Type="TNOW.GRAC_ARM_ACMNG_SRV.Personnel" Multiplicity="1" Role="FromRole_ToNewUserRequest"/><End Type="TNOW.GRAC_ARM_ACMNG_SRV.NewUserRequest" Multiplicity="*" Role="ToRole_ToNewUserRequest"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ToNewUserRequest"><PropertyRef Name="USER_ID"/></Principal>
+					<Dependent Role="ToRole_ToNewUserRequest"><PropertyRef Name="CREATED_BY"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ToRemoveAccessRequest" sap:content-version="1"><End Type="TNOW.GRAC_ARM_ACMNG_SRV.Personnel" Multiplicity="1" Role="FromRole_ToRemoveAccessRequest"/><End Type="TNOW.GRAC_ARM_ACMNG_SRV.RemoveAccessRequest" Multiplicity="*" Role="ToRole_ToRemoveAccessRequest"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ToRemoveAccessRequest"><PropertyRef Name="USER_ID"/></Principal>
+					<Dependent Role="ToRole_ToRemoveAccessRequest"><PropertyRef Name="CREATED_BY"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ToFirefighterRequest" sap:content-version="1"><End Type="TNOW.GRAC_ARM_ACMNG_SRV.Personnel" Multiplicity="1" Role="FromRole_ToFirefighterRequest"/><End Type="TNOW.GRAC_ARM_ACMNG_SRV.FirefighterRequest" Multiplicity="*" Role="ToRole_ToFirefighterRequest"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ToFirefighterRequest"><PropertyRef Name="USER_ID"/></Principal>
+					<Dependent Role="ToRole_ToFirefighterRequest"><PropertyRef Name="CREATED_BY"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="TNOW_GRAC_ARM_ACMNG_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="SubmitGRCRequestSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.SubmitGRCRequest" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="AllFirefighterIdSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.AllFirefighterId" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="NARUserInformationSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.NARUserInformation" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="NARSystemInformationSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.NARSystemInformation" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="NAROrgValueInformationSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.NAROrgValueInformation" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="NARRoleInformationSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.NARRoleInformation" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="NARORGVALUEFROMSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.NARORGVALUEFROM" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="PersonnelSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.Personnel" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="SystemSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.System" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="FirefighterSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.Firefighter" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="NewUserRequestSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.NewUserRequest" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="RemoveAccessRequestSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.RemoveAccessRequest" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="FirefighterRequestSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.FirefighterRequest" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ApproversSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.Approvers" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ApprovalInboxSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.ApprovalInbox" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="SystemForRequestDetailsSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.SystemForRequestDetails" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ApproversForRequestDetailsSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.ApproversForRequestDetails" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="AllSystemLandscapeSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.AllSystemLandscape" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="TCodeInfoSet" EntityType="TNOW.GRAC_ARM_ACMNG_SRV.TCodeInfo" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="NARUserToRoleSet" Association="TNOW.GRAC_ARM_ACMNG_SRV.NARUserToRole" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="NARUserInformationSet" Role="FromRole_NARUserToRole"/><End EntitySet="NARRoleInformationSet" Role="ToRole_NARUserToRole"/></AssociationSet>
+				<AssociationSet Name="NARUserToOrgSet" Association="TNOW.GRAC_ARM_ACMNG_SRV.NARUserToOrg" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="NARUserInformationSet" Role="FromRole_NARUserToOrg"/><End EntitySet="NAROrgValueInformationSet" Role="ToRole_NARUserToOrg"/></AssociationSet>
+				<AssociationSet Name="ToFirefighterRequestSet" Association="TNOW.GRAC_ARM_ACMNG_SRV.ToFirefighterRequest" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="PersonnelSet" Role="FromRole_ToFirefighterRequest"/><End EntitySet="FirefighterRequestSet" Role="ToRole_ToFirefighterRequest"/></AssociationSet>
+				<AssociationSet Name="ToNewUserRequestSet" Association="TNOW.GRAC_ARM_ACMNG_SRV.ToNewUserRequest" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="PersonnelSet" Role="FromRole_ToNewUserRequest"/><End EntitySet="NewUserRequestSet" Role="ToRole_ToNewUserRequest"/></AssociationSet>
+				<AssociationSet Name="ToRemoveAccessRequest_AssocSet" Association="TNOW.GRAC_ARM_ACMNG_SRV.ToRemoveAccessRequest" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="PersonnelSet" Role="FromRole_ToRemoveAccessRequest"/><End EntitySet="RemoveAccessRequestSet" Role="ToRole_ToRemoveAccessRequest"/></AssociationSet>
+				<AssociationSet Name="ToSystemSet" Association="TNOW.GRAC_ARM_ACMNG_SRV.ToSystem" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="PersonnelSet" Role="FromRole_ToSystem"/><End EntitySet="SystemSet" Role="ToRole_ToSystem"/></AssociationSet>
+				<AssociationSet Name="ToFirefighterSet" Association="TNOW.GRAC_ARM_ACMNG_SRV.ToFirefighter" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="PersonnelSet" Role="FromRole_ToFirefighter"/><End EntitySet="FirefighterSet" Role="ToRole_ToFirefighter"/></AssociationSet>
+				<AssociationSet Name="NARUserToSystemsSet" Association="TNOW.GRAC_ARM_ACMNG_SRV.NARUserToSystems" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="NARUserInformationSet" Role="FromRole_NARUserToSystems"/><End EntitySet="NARSystemInformationSet" Role="ToRole_NARUserToSystems"/></AssociationSet>
+				<AssociationSet Name="NARUserToTcodesSet" Association="TNOW.GRAC_ARM_ACMNG_SRV.NARUserToTcodes" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="NARUserInformationSet" Role="FromRole_NARUserToTcodes"/><End EntitySet="TCodeInfoSet" Role="ToRole_NARUserToTcodes"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./tnow/GRAC_ARM_ACMNG_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./tnow/GRAC_ARM_ACMNG_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,481 @@
+<mvc:View xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+controllerName="com.new.prjt.znew_arm_prjt.controller.modifyRequest"
+    xmlns:u="sap.ui.unified" xmlns:dnd="sap.ui.core.dnd" xmlns:uxap="sap.uxap" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table">
+    <VBox class="sapUiSmallMargin">
+        <f:SimpleForm class="sapUiSizeCompact" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+            labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+            singleContainerFullSize="false">
+            <f:content>
+                <core:Title text="Request Details"/>
+                <Label text="Request For"/>
+                <Select id="SlUserRef" change="onSelectModifierA">
+                    <items>
+                        <core:Item text="Self" key="Self"/>
+                        <core:Item text="Other User" key="Other"/>
+                        <!--<core:Item text="My Reportees" key="Multiple"/>-->
+                    </items>
+                </Select>
+                <Label text="User" required="true"/>
+                <!--<Input width="85%" id="userId" value="{Street}"></Input>-->
+                <!--    <ComboBox id="idComboUserMod" items="{path:'/myItems'}" editable="false" width="75%" selectionChange="onUserChangeMod">
+                    <core:Item text="{USER_ID}" key="{USER_ID}"/>
+                </ComboBox>-->
+                <VBox>
+                    <Input id="idComboUserMod" showValueHelp="true" submit="onUserSubmit" editable="false"  valueHelpRequest="onValueHelpUsers" valueHelpOnly="true"/>
+                    <Text id="idNameMod"></Text>
+                </VBox>
+                <Label required="true" text="Business Process" id="idBusinessProcess"/>
+                <ComboBox required="true" change="BusinessChange"  id="cbBusinessProcessMod" items="{grac>/Business_ProcessSet}">
+                    <items>
+                        <core:Item text="{grac>DESCN}" key="{grac>BPROC}"/>
+                        <!--<core:Item text="My Reportees" key="My Reportees"/>-->
+                    </items>
+                </ComboBox>
+                <core:Title text=""/>
+                <Label text="Access Requirement"/>
+                <TextArea required="true" id="idModifyText"   liveChange="handleLiveChange" valueStateText="Please Enter Access Requirement" maxLength="120" rows="3" cols="30"/>
+            </f:content>
+        </f:SimpleForm>
+        <Wizard id="CreateProductWizard11" finishButtonText="Finish" showNextButton="false" currentStep="ProductTypeStep12"
+            class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
+            <WizardStep id="ProductTypeStep12" nextStep="ProductInfoStep12" title="User Information" activate="onActivate">
+                <MessageStrip showIcon="true"
+                    text="Enter your Personal Information. This information is saved in all the SAP systems and will be utilized for further communications such as new password, etc., Ensure you provide the right details!"
+                    class="sapUiMediumMarginTop"/>
+                <!--<Text class="sapUiSmallMarginBottom"-->
+                <!--    text=""/>-->
+                <f:SimpleForm class="sapUiSizeCompact" id="SimpleFormChange480_12120Dual12" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4"
+                    labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+                    columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">
+                    <f:content>
+                        <core:Title text="Personal"/>
+                        <Label required="true" text="First Name"/>
+                        <Input id="fanemMod" width="85%" value="{userInfo>/FIRST_NAME}" editable="false" change="onValidatationCheck"
+                            valueStateText="Please Enter First Name"></Input>
+                        <Label required="true" text="Last Name"/>
+                        <Input width="85%" id="lnameMod" value="{userInfo>/LAST_NAME}" editable="false" change="onValidatationCheck"
+                            valueStateText="Please Enter Last Name"></Input>
+                        <Label required="true" text="Employee Type"/>
+                        <!--<Input width="85%" id="idemptypeMod" value="{userInfo>/EMPTYPE}" editable="{= ${userInfo>/EMPTYPE} === ''}" change="onValidatationCheck"-->
+                        <!--    valueStateText="Please Enter Emp Type"></Input>-->
+                        <Select width="85%" id="idemptypeMod" items="{ path: 'EmployeeTypeMod>/' }" valueStateText="Please Enter Emp Type"
+                            editable="true" change="onEMpTypChange" >
+                            <core:Item key="{EmployeeTypeMod>key}" text="{EmployeeTypeMod>text}"/>
+                        </Select>
+                        <core:Title text="Reporting Details"/>
+                        <Label required="true" text="Reporting Manager"/>
+                        <Input width="85%" id="managerIDMod" value="{userInfo>/ZRMID}" editable="false" change="onValidatationCheck"
+                            valueStateText="Please Enter Reporting Manager "></Input>
+                        <Label text="Personal Number"/>
+                        <Input width="85%" id="idPNumberMod" value="{userInfo>/ZEMPID}" editable="false" change="onValidatationCheck"
+                            valueStateText="Please Enter Personal Number "></Input>
+                        <core:Title text="Department"/>
+                        <Label required="false" text="Department"/>
+                        <Input width="85%" id="idDepartMod" value="{userInfo>/DEPARTMENT}" editable="true"
+                            change="onValidatationCheck" valueStateText="Please Enter Department "></Input>
+                        <core:Title text="Communication"/>
+                        <Label  text="Mobile Number"/>
+                        <!--<Input type="Number" width="85%" id="IDMObMod" value="{userInfo>/PHONE}" editable="{= ${userInfo>/PHONE} === ''}"-->
+                        <!--    liveChange="onMobilenumber" change="onValidatationCheck" valueStateText="Please Enter Mobile Number "></Input>-->
+                        <MaskInput mask = "9999999999" change="onValidatationCheck" placeholderSymbol = "_" placeholder =
+                                    "Enter a ten digit number" width="85%" id="IDMObMod" value="{userInfo>/PHONE}"  />
+                        <Label required="true" text="Email"/>
+                        <Input width="85%" id="idemailMod" value="{userInfo>/EMAIL}" editable="false" change="onValidatationCheck"
+                            valueStateText="Please Enter Email"></Input>
+                        <core:Title id="idModify3rdPary"/>
+                        <Label text="Adani Reporting MGR EMP ID"/>
+                        <Input visible="false" width="85%" id="idempidMod" value="{userInfo>/ZRMID}" editable="false"
+                            change="onValidatationCheck" valueStateText="Please Enter EMP ID"></Input>
+                        <Label text="Vendor Name"/>
+                        <Input visible="false" width="85%" id="idvendorMod" value="{userInfo>/VENDORNAME}" change="onValidatationCheck"
+                            valueStateText="Please Enter Vendor Number"></Input>
+                    </f:content>
+                </f:SimpleForm>
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Button id="idNewButSysInfoMod" type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:System/Landscape Information"
+                            press="onNextStepModify" textDirection="LTR"/>
+                        <ToolbarSpacer/>
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+            <WizardStep id="ProductInfoStep12" nextStep="OptionalInfoStep12" title="System/Landscape Information" activate="onActivate">
+                <MessageStrip showIcon="true"
+                    text="Drag and Drop the systems/landscape in which you are looking for access. Ensure you select the right systems to avoid any rejections. Incase if you have any questions, reachout to your Reporting manager before raising the request"
+                    class="sapUiMediumMarginTop"/>
+                <Text class="sapUiSmallMarginBottom" text=" "/>
+                <HBox renderType="Bare">
+                    <Table class="sapUiSizeCompact"  growing="true" growingThreshold="50" id="tableMod1" items="{ path: 'SysLandInfoMod>/SysLaData' }" beforeOpenContextMenu="onBeforeOpenContextMenu"
+                        mode="MultiSelect" selectionChange="onSelectionChangeSystemMod">
+                        <contextMenu>
+                            <Menu>
+                                <MenuItem text="Move to Selected Products" press="moveToSelectedProductsTable"/>
+                            </Menu>
+                        </contextMenu>
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="Available System"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <Text class="myCustomText" text="System"/>
+                            </Column>
+                            <Column>
+                                <Text class="myCustomText" text="Description"/>
+                            </Column>
+                            <Column>
+                                <Text class="myCustomText" text="ID Exist"/>
+                            </Column>
+                        </columns>
+                        <dragDropConfig>
+                            <dnd:DragInfo groupName="available2selected" sourceAggregation="items"/>
+                            <dnd:DropInfo groupName="selected2available" drop="onDropSelectedProductsTableModS"/>
+                        </dragDropConfig>
+                        <ColumnListItem class="myCustomText" id="detailsListItem1Mod">
+                            <cells>
+                                <Text text="{SysLandInfoMod>CONNECTOR}" wrapping="false"/>
+                                <Text text="{SysLandInfoMod>RFCDOC1}" wrapping="false"/>
+                                <Text text="{= ${SysLandInfoMod>EXIST} === 'X' ? 'No' : 'Yes' }" wrapping="false"/>
+                            </cells>
+                        </ColumnListItem>
+                    </Table>
+                    <VBox justifyContent="Center" class="sapUiTinyMarginBeginEnd">
+                        <!--<Button class="sapUiTinyMarginBottom" icon="sap-icon://navigation-right-arrow" tooltip="Move to selected" press="moveToTable2"/>-->
+                        <!--<Button icon="sap-icon://navigation-left-arrow" tooltip="Move to available" press="moveToTable1"/>-->
+                    </VBox>
+                    <Table class="sapUiSizeCompact" visible="false" id="table2Mod" items="{ path: 'SeleSysLandInfoMod>/sleSysLaData' }">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="Selected System"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <Text class="myCustomText" text="System"/>
+                            </Column>
+                            <Column>
+                                <Text class="myCustomText" text="Description"/>
+                            </Column>
+                        </columns>
+                        <dragDropConfig>
+                            <dnd:DragInfo groupName="selected2available" sourceAggregation="items"/>
+                            <dnd:DropInfo groupName="available2selected" targetAggregation="items" dropPosition="Between" drop="onDropSelectedProductsTableMod"/>
+                            <dnd:DragDropInfo sourceAggregation="items" targetAggregation="items" dropPosition="Between" drop="onDropSelectedProductsTableMod"/>
+                        </dragDropConfig>
+                        <ColumnListItem class="myCustomText">
+                            <cells>
+                                <Text text="{SeleSysLandInfoMod>CONNECTOR}" wrapping="false"/>
+                                <Text text="{SeleSysLandInfoMod>RFCDOC1}" wrapping="false"/>
+                            </cells>
+                        </ColumnListItem>
+                    </Table>
+                </HBox>
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Button id="idNewButTcodeInfoMod" type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Transaction code Information"
+                            press="onNextStepModify" textDirection="LTR"/>
+                        <ToolbarSpacer/>
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+            <WizardStep id="OptionalInfoStep12" nextStep="PricingStep12" optional="true" title="Transaction code Information" activate="onActivate">
+                <MessageStrip showIcon="true"
+                    text="You may either add a transaction code manually or upload a list of transaction codes using the template. Transaction codes can be system specific."
+                    class="sapUiMediumMarginTop"/>
+                <Text class="sapUiSmallMarginBottom" text=""/>
+                <Table id="idTcodeMod" class="sapUiSizeCompact" items="{ path: 'TcodeModelMod>/TcodeData'}" >
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="" level="H2"/>
+                            <ToolbarSpacer/>
+                            <Button id="idAddRowButMod" icon="sap-icon://add" type="Emphasized" text="Row" press="addRowMod" enabled="{=${SeleSysLandInfoMod>/sleSysLaData/length} > 0 ? true:false}"/>
+                            <Button icon="sap-icon://download" text="Download Template" type="Emphasized" press="onDownloadTemplate"/>
+                            <!--<Button icon="sap-icon://upload" text="Upload" type="Emphasized" press="openDialog">-->
+                            <!--    <customData>-->
+                            <!--        <core:CustomData key="action" value="modify"></core:CustomData>-->
+                            <!--    </customData>-->
+                            <!--</Button>-->
+                            <u:FileUploader id="FileUploaderId" buttonText="Upload" iconOnly="false" buttonOnly="true"
+                                icon="sap-icon://upload" iconFirst="true" style="Emphasized" sameFilenameAllowed="true" change="onUploadMRTcode" enabled="{=${SeleSysLandInfoMod>/sleSysLaData/length} > 0 ? true:false}"/>
+                        </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column >
+                            <Text text="Connector"/>
+                        </Column>
+                        <Column>
+                            <Text text="Transaction Code"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Transaction Description"/>
+                        </Column>
+                        <Column width="50px">
+                            <Text text=""></Text>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <ComboBox selectedKey="{TcodeModelMod>Connector}" showSecondaryValues="true" items="{ path: 'SeleSysLandInfoMod>/sleSysLaData'}"
+                                    change="onChnageConnectorMod">
+                                    <core:ListItem key="{SeleSysLandInfoMod>CONNECTOR}" text="{SeleSysLandInfoMod>CONNECTOR}" additionalText="{SeleSysLandInfoMod>RFCDOC1}"/>
+                                </ComboBox>
+                                <Input value="{TcodeModelMod>Tcode}" tooltip="{TcodeModelMod>Tcode}" maxLength="20" valueState="{=${TcodeModelMod>TcodeDesc} ? 'None' :'Error'}" change="onTcodeChangeMod" liveChange="handleLiveChange" name="Tcode" valueStateText="Please Enter Valid Tcode" placeholder="Please Enter Valid Tcode"></Input>
+                                <Input value="{TcodeModelMod>TcodeDesc}" editable="false" change="onTDesc"></Input>
+                                <Button icon="sap-icon://delete" press="onDeleteTocdeMod"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Button id="idNewOrgNextMod" type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Organization value Information"
+                            press="onNextStepModify" textDirection="LTR"/>
+                        <ToolbarSpacer/>
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+            <WizardStep id="PricingStep12" nextStep="PricingStep221" title="Organization value Information" activate="onActivate">
+                <MessageStrip showIcon="true"
+                    text="These organization values are picked up based on your current access. Incase, if you are requesting for the 1st time, you may select/enter the values manually. Ensure to fill-in all the fields to ensure you get access to the right roles."
+                    class="sapUiMediumMarginTop"/>
+                <Text class="sapUiSmallMarginBottom" text=""/>
+                <Table id="tblExcelDatfa134tg" class="sapUiSizeCompact" items="{ path: 'OrgTableModelMod>/OrgDataNormal', sorter: { path: 'Conn' }}"
+                     visible="{ path: 'OrgTableModelMod>/aTcodes', formatter: '.showIfCICO' }" inset="false" updateFinished="">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="" level="H2"/>
+                            <ToolbarSpacer/>
+                            <Button icon="sap-icon://refresh" type="Emphasized" text="Reset" press="onORgRefreshMod"/>
+                            <Button icon="sap-icon://download" text="Download Template" type="Emphasized" press="onDownloadTemplateOrg"/>
+                            <u:FileUploader id="FileUploaderOrg" buttonText="Upload" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"
+                                icon="sap-icon://upload" iconFirst="true" style="Emphasized" sameFilenameAllowed="true" change="onUploadMROrg" enabled="{=${SeleSysLandInfoMod>/sleSysLaData/length} > 0 ? true:false}"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column hAlign="Center">
+                            <Text text="System"/>
+                        </Column>
+                        <Column hAlign="Center" width="12em" minScreenWidth="Tablet" demandPopin="true" >
+                            <Text text="Org value Description" />
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="Tcode"/>
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="Value"/>
+                        </Column>
+                        <Column width="50px">
+                            <Text text=""></Text>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle" type="Inactive">
+                            <cells>
+                                <!--<Input value="{OrgTableModelMod>OrgLevel}" editable="false"></Input>-->
+                                <Input value="{OrgTableModelMod>Conn}" editable="false" tooltip="{OrgTableModelMod>Conn}" ></Input>
+                                <Input value="{OrgTableModelMod>OrgVal}" editable="false"  tooltip="{OrgTableModelMod>OrgVal}" ></Input>
+                                <Input value="{OrgTableModelMod>Tcode}" tooltip="{OrgTableModelMod>Tcode}" editable="false" liveChange="handleLiveChange"></Input>
+                                <!-- <Input value="{OrgTableModelMod>FromOrg}" showValueHelp="true"  name="AlphaNum" liveChange="handleLiveChange" valueHelpRequest="onOrgFromMod"></Input> -->
+                                <HBox width="100%" renderType="Bare">
+                                <Input value="{OrgTableModelMod>FromOrg}"   tooltip="{OrgTableModelMod>FromOrg}"  showValueHelp="false"  name="AlphaNum" liveChange="handleLiveChange" editable="false" />
+                                <Button icon="sap-icon://value-help" press="onOrgFromMod" enabled="{OrgTableModelMod>FromOrgValueHelp}" class="sapUiTinyMarginBeginEnd"></Button>
+                                <Button icon="sap-icon://add" press="addNewOrgMod"  enabled="{OrgTableModelMod>FromOrgValueAdd}" type="Accept"/>
+ 
+                                </HBox>
+                                <!--<Input value="{OrgTableModelMod>ToOrg}" showValueHelp="true" valueHelpRequest="onOrgTo"></Input>-->
+                                <Button icon="sap-icon://delete" type="Reject" press="removeNewOrgMod" visible="{= ${OrgTableModelMod>isNew} === true }"/>
+ 
+                                <!--<Button id="idRemoveOrgMod" icon="sap-icon://decline" press="removeNewOrgMod" type="Reject"-->
+                                <!--    enabled="{= ${OrgTableModelMod>OrgLevel} !== 'WERKS' &amp;&amp; ${OrgTableModelMod>OrgLevel} !== 'BUKRS'}"/>-->
+                                <!-- <Button icon="sap-icon://delete" press="deleteNewOrgNew" type="Accept"/> -->
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+ 
+ 
+    <Table id="tblExcelDatfa134tgCICO" class="sapUiSizeCompact" items="{ path: 'OrgTableModelMod>/OrgDataCICO', sorter: { path: 'Conn' }}"
+                     visible="{ path: 'OrgTableModelMod>/OrgDataCICO', formatter: '.hasItems' }"  inset="false" updateFinished="">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="" level="H2"/>
+                            <ToolbarSpacer/>
+                            <Button icon="sap-icon://refresh" type="Emphasized" text="Reset" press="onORgRefreshMod"/>
+                            <Button
+  icon="sap-icon://add"
+  type="Emphasized"
+  text="Add"
+  press="onAddCICORow" />
+                            <!-- <Button icon="sap-icon://download" text="Download Template" type="Emphasized" press="onDownloadTemplateCICO"/> -->
+                            <!-- <u:FileUploader buttonText="Upload" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"
+                                icon="sap-icon://upload" iconFirst="true" style="Emphasized" sameFilenameAllowed="true" change="onUploadMROrgCICO" enabled="{=${SeleSysLandInfoMod>/sleSysLaData/length} > 0 ? true:false}"/> -->
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column hAlign="Center">
+                            <Text text="System"/>
+                        </Column>
+                        <!-- <Column hAlign="Center" width="12em" minScreenWidth="Tablet" demandPopin="true" >
+                            <Text text="Org value Description" />
+                        </Column> -->
+                        <Column hAlign="Center">
+                            <Text text="Tcode"/>
+                        </Column>
+                         <Column
+            hAlign="Center"
+        >
+            <Text text="Profile" />
+        </Column>
+         <Column
+            hAlign="Center"
+   
+        >
+            <Text text="Sub-Profile" />
+        </Column>
+        <Column hAlign="Center">
+<Text text="Designation"/>
+</Column>
+<Column width="50px" hAlign="Center">
+  <Text text=""/>
+</Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle" type="Inactive">
+                            <cells>
+                                <!--<Input value="{OrgTableModelMod>OrgLevel}" editable="false"></Input>-->
+                                <Input value="{OrgTableModelMod>Conn}" editable="false" tooltip="{OrgTableModelMod>Conn}" ></Input>
+                                <!-- <Input value="{OrgTableModelMod>OrgVal}" editable="false"  tooltip="{OrgTableModelMod>OrgVal}" ></Input> -->
+                                <Input value="{OrgTableModelMod>Tcode}" tooltip="{OrgTableModelMod>Tcode}" editable="false" liveChange="handleLiveChange"></Input>
+                                <Input width="100%" value="{OrgTableModelMod>Profile}" showValueHelp="true" valueHelpOnly="true" editable="{OrgTableModelMod>Editable}" valueHelpRequest="onProfileF4Help" placeholder="Select Profile"/>
+<Input width="100%" value="{OrgTableModelMod>SubProfile}" placeholder="Select Sub-Profile" showValueHelp="true" valueHelpRequest="onSubProfileVH"  enabled="{OrgTableModelMod>Editable}"/>
+<Input
+    width="100%"
+    value="{OrgTableModelMod>DESIGNTION}"
+    placeholder="Select Designation(s)"
+    showValueHelp="true"
+    valueHelpOnly="true"
+    enabled="{OrgTableModelMod>Editable}"
+    valueHelpRequest="onDesignationVH"
+     />
+     <Button
+    icon="sap-icon://delete"
+    type="Reject"
+    press="onDeleteCICORow"
+    visible="{= ${OrgTableModelMod>isNew} === true }"/>
+                           
+                               
+ 
+                               
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+ 
+ 
+ 
+ 
+ 
+ 
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Button id="idNewRoleNextMod" type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Attachments" press="onNextStepModify"
+                            textDirection="LTR"/>
+                        <ToolbarSpacer/>
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+           
+            <WizardStep id="PricingStep423" nextStep="PricingStep526" title="Attachments" activate="onActivate">
+                <MessageStrip showIcon="true"
+                    text="Attach the files that are relavant to this request. For eg: Approval emails etc., either in PDF format or JPG Format. You need not attach the list of transaction codes again here."
+                    class="sapUiMediumMarginTop"/>
+                <Text class="sapUiSmallMarginBottom" text=""/>
+                <Table class="sapUiSizeCompact" visible="true" inset="false" items="{AttInfoModelMod>/AttInfoData}">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <ToolbarSpacer/>
+                            <Button icon="sap-icon://add" type="Emphasized" text="Attach" press="getAttachDialog"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="Title"/>
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="File Type"/>
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="Added on"/>
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="Added By"/>
+                        </Column>
+                        <Column width="50px"/>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle" type="Inactive">
+                            <cells>
+                                <Input width="70%" value="{AttInfoModelMod>tile}" editable="false"/>
+                                <Input width="70%" value="{AttInfoModelMod>type}" editable="false"/>
+                                <Text width="70%" text="{
+                                    path: 'AttInfoModelMod>addedOn',
+                                    type: 'sap.ui.model.type.Date',
+                                    formatOptions: {
+                                        style: 'medium'
+                                    }
+                                }"/>
+                                <Input width="70%" value="{AttInfoModelMod>addedBy}" editable="false"/>
+                                <Button icon="sap-icon://delete" press="deleteRowRole" type="Reject"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Button id="idNextReqSubMod" type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Request Submission" press="onNextStepModify" textDirection="LTR"/>
+                        <ToolbarSpacer/>
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+            <WizardStep id="PricingStep526" title="Review Request" activate="onActivate">
+                <MessageStrip showIcon="true"
+                    text="Review your request here before submitting it. We have consolidated all your requirement in a single screen for you to quickly review before the actual submission. Once the request is submitted, it will be approved by various approvers. You will be notified at every stage."
+                    class="sapUiMediumMarginTop"/>
+                    <ToolbarSpacer/>
+                    <Button icon="sap-icon://refresh" type="Emphasized" text="Refresh Request Submission" press="onNextStepModify"/>
+                <f:SimpleForm class="sapUiSizeCompact" id="idModReview" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4"
+                    labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                    columnsL="2" columnsM="2" singleContainerFullSize="false">
+                    <f:content>
+                        <core:Title text="User Review"/>
+                        <Label text="Request raised by"/>
+                        <Text text="{navModel>/oResult/user_id}"/>
+                        <Label text="Request raised for"/>
+                        <Text id="idReqRaisedForMod" text="{userInfo>/USER_ID}"/>
+                        <Label text="Tcodes"/>
+                        <Text id="idTcodesListMod"/>
+                        <core:Title text=""/>
+                        <Label text="Firstname"/>
+                        <Text id="txtFnameReviewRequestMod" text="{userInfo>/FIRST_NAME}"/>
+                        <Label text="Lastname"/>
+                        <Text id="txtLnameReviewRequestMod" text="{userInfo>/LAST_NAME}"/>
+                    </f:content>
+                </f:SimpleForm>
+               
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Label id="IdModAccReq" text="" class="filename"/>
+                        <ToolbarSpacer/>
+                        <Button type="Accept" icon="sap-icon://complete" text="Submit" press="onSubmitMod" textDirection="LTR"/>
+                        <!--<Button type="Emphasized" icon="sap-icon://save" text="Save" press="onSubmitMod" textDirection="LTR"/>-->
+                        <Button type="Reject" icon="sap-icon://cancel" text="Cancel" textDirection="LTR" press="onCancelMod"/>
+                        <!--press="handleOpen"-->
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+        </Wizard>
+    </VBox>
+</mvc:View>
+ 

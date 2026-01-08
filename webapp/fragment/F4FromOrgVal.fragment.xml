@@ -1,0 +1,22 @@
+<core:FragmentDefinition id="F4"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+	    draggable="true"
+		resizable="true"
+		noDataText="No Value Found"
+		title="Select From Value"
+		search="onSearchFromVal"
+		confirm="onValueHelpDialogClose"
+		cancel="onValueHelpDialogClose"
+		showClearButton="true"
+		items="{OrgModel>/}"
+		multiSelect="true">
+		<StandardListItem
+			title="{OrgModel>CUR_VALUE}"
+			description="{OrgModel>TEXT}"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,231 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" height="100%"
+	xmlns:t="sap.ui.table" xmlns:dnd="sap.ui.core.dnd" displayBlock="true" xmlns:core="sap.ui.core">
+	<Page title="Reactivate User" titleLevel="H1" backgroundDesign="Transparent" floatingFooter="true" showFooter="true">
+		<content width="90%">
+			<VBox class="sapUiSmallMargin">
+				<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+					adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+					singleContainerFullSize="false">
+					<f:content>
+						<core:Title text="Request For"/>
+						<Label text="Alias"/>
+						<Text text="{SupplierName}"/>
+						<Label text="User"/>
+						<Text text="{SupplierName}"/>
+						<core:Title text=""/>
+						<Label text="Description"/>
+						<Text text="{Url}"/>
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+			<Wizard id="CreateProductWizardId269" finishButtonText="Finish" currentStep="ProductTypeStep369"
+				class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
+				<WizardStep id="ProductTypeStep369" title="User Information" activate="onActivate">
+					<f:SimpleForm class="sapUiSizeCompact" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12"
+						labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3"
+						singleContainerFullSize="false">
+						<f:content>
+							<core:Title text="Personal"/>
+							<Label required="true" text="First Name"/>
+							<Text/>
+							<Label required="true" text="Last Name"/>
+							<Text/>
+							<Label required="true" text="Employee Type"/>
+							<Text/>
+							<core:Title text="Reporting Details"/>
+							<Label required="true" text="Reporting Manager"/>
+							<Text/>
+							<Label required="true" text="Personal Number"/>
+							<Text/>
+							<core:Title text="Department"/>
+							<Label required="true" text="Department"/>
+							<Text/>
+							<core:Title text="Communcation"/>
+							<Label required="true" text="Mobile Numbar"/>
+							<Text/>
+							<Label required="true" text="Email"/>
+							<Text/>
+							<core:Title text="3rd Party User Details"/>
+							<Label required="true" text="Adani Reporting MGR EMP ID"/>
+							<Text/>
+							<Label required="true" text="Vendor Number"/>
+							<Text/>
+						</f:content>
+					</f:SimpleForm>
+				</WizardStep>
+				<WizardStep id="ProductInfoStep269" title="Existing Assignments" activate="onActivate">
+					<Table class="sapUiSizeCompact" visible="true" mode="MultiSelect" inset="false">
+						<headerToolbar>
+							<OverflowToolbar>
+								<Title text="Workitems" level="H2"/>
+								<ToolbarSpacer/>
+								<!--<Button icon="sap-icon://save" type="Emphasized" text="Sumbit"/>-->
+								<!--<Button icon="sap-icon://delete" type="Reject" text="Remove"/>-->
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="System"/>
+							</Column>
+							<Column hAlign="Center" width="12em" minScreenWidth="Tablet" demandPopin="true">
+								<Text text="System Description"/>
+							</Column>
+							<Column hAlign="End">
+								<Text text="Lock Status"/>
+							</Column>
+							<Column hAlign="Center">
+								<Text text="Validity Status"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem vAlign="Middle" type="Inactive">
+								<cells>
+									<Text text="SYS1CLNT100"/>
+									<Text text="System 1"/>
+									<Button text="Locked" type="Reject" icon="sap-icon://status-negative"/>
+									<!--<ObjectStatus text="Locked" icon="sap-icon://status-negative" state="Error"/>-->
+									<Button text="Expired" type="Reject" icon="sap-icon://status-negative"/>
+								</cells>
+							</ColumnListItem>
+							<ColumnListItem vAlign="Middle" type="Inactive">
+								<cells>
+									<Text text="SYS1CLNT101"/>
+									<Text text="System 2"/>
+									<Button enabled="false" text="Active" type="Emphasized" icon="sap-icon://status-positive"/>
+									<!--<ObjectStatus text="Active" icon="sap-icon://status-positive" state="Success"/>-->
+									<Button enabled="false" text="Active" type="Emphasized" icon="sap-icon://status-positive"/>
+									<!--<ObjectStatus text="Active" icon="sap-icon://status-positive" state="Success"/>-->
+									<!--<Text text="Active"/>-->
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</WizardStep>
+				<WizardStep id="PricingStep1269" title="Attachments" activate="onActivate">
+					<Text class="sapUiSmallMarginBottom"
+						text="Attach the files that are relavant to this request. For eg: Approval emails etc., either in PDF format or JPG Format. You need not attach the list of transaction codes again here."/>
+					<f:SimpleForm class="sapUiSizeCompact" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+						labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+						singleContainerFullSize="false">
+						<f:content>
+							<core:Title text="Upload file"/>
+							<Label text=""/>
+							<Button type="Emphasized" width="45%" text="Upload" press="openDialog" textDirection="LTR"/>
+						</f:content>
+					</f:SimpleForm>
+					<t:Table class="sapUiSizeCompact" rows="{/ProductCollection}" selectionMode="MultiToggle" visibleRowCount="4" ariaLabelledBy="title">
+						<t:extension>
+							<OverflowToolbar>
+								<Title text="Type"/>
+								<ToolbarSpacer/>
+							</OverflowToolbar>
+						</t:extension>
+						<t:columns>
+							<t:Column width="11rem">
+								<Label text="Title"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Version"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="File Size"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="File Type"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Added on"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Added By"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Attachment Type"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
+				</WizardStep>
+				<WizardStep id="PricingStep2269" title="Request Submission" activate="onActivate">
+					<Text class="sapUiSmallMarginBottom"
+						text="Review your request here before submitting it. We have consolidated all your requirement in a single screen for you to quickly review before the actual submission. Once the request is submitted, it will be approved by various approvers. You will be notified at every stage."/>
+					<f:SimpleForm class="sapUiSizeCompact" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+						labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+						singleContainerFullSize="false">
+						<f:content>
+							<core:Title text=""/>
+							<Label text="User "/>
+							<Text text="Test User..."/>
+						</f:content>
+					</f:SimpleForm>
+					<t:Table class="sapUiSizeCompact" rows="{/ProductCollection}" selectionMode="MultiToggle" visibleRowCount="4" ariaLabelledBy="title">
+						<t:columns>
+							<t:Column width="11rem">
+								<Label text="System"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="System Description"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="User to be Unlocked"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Validity Date Set TO"/>
+								<t:template>
+									<Text text="{Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
+					<f:SimpleForm class="sapUiSizeCompact">
+						<Toolbar width="100%">
+							<Label id="lblFisdsleNrgrgame3fe4" text="" class="filename"/>
+							<ToolbarSpacer/>
+							<Button type="Accept" icon="sap-icon://complete" text="Submit" press="onSubmit" textDirection="LTR"/>
+							<Button type="Emphasized" icon="sap-icon://save" text="Save" press="handleOpen" textDirection="LTR"/>
+							<Button type="Reject" icon="sap-icon://cancel" text="Cancel" press="handleOpen" textDirection="LTR"/>
+						</Toolbar>
+					</f:SimpleForm>
+				</WizardStep>
+			</Wizard>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button text="Accept" type="Accept"/>
+				<Button text="Reject" type="Reject"/>
+				<Button text="Edit"/>
+				<Button text="Delete"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

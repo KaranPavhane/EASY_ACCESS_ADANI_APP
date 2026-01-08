@@ -1,0 +1,1118 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    controllerName="com.new.prjt.znew_arm_prjt.controller.myAccess"
+    xmlns:goals="sap.uxap.sample.SharedBlocks.goals"
+    xmlns:u="sap.ui.unified"
+    xmlns:dnd="sap.ui.core.dnd"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:layout="sap.ui.layout"
+>
+    <Page
+        class="sapUiSizeCompact"
+        title="My Access"
+        titleLevel="H1"
+        backgroundDesign="Transparent"
+        floatingFooter="true"
+        showFooter="true"
+    >
+        <content>
+            <uxap:ObjectPageLayout
+                showTitleInHeaderContent="true"
+                showEditHeaderButton="true"
+                navigate="onMyaccessNav"
+            >
+                <uxap:headerTitle>
+                    <uxap:ObjectPageDynamicHeaderTitle
+                        backgroundDesign="Transparent"
+                    >
+                        <uxap:expandedHeading>
+                            <VBox>
+                                <Title
+                                    class="sapUiSmallMarginTop"
+                                    text="Welcome Back {UserDatilsModel>/userDatails/FIRST_NAME} {UserDatilsModel>/userDatails/LAST_NAME}"
+                                    wrapping="true"
+                                />
+                                <FlexBox wrap="Wrap">
+                                    <HBox class="sapUiLargeMarginEnd">
+                                        <HBox
+                                            class="sapUiTinyMarginBottom"
+                                            width="100rem"
+                                        >
+                                            <Label
+                                                design="Bold"
+                                                text="Your SAP ID is: {UserDatilsModel>/userDatails/USER_ID}"
+                                                class="sapUiTinyMarginEnd"
+                                            />
+                                            <!-- <Text
+                                                text="{UserDatilsModel>/userDatails/USER_ID}"
+                                                class="sapUiSmallMarginEnd"
+                                            /> -->
+                                            <Label
+                                                design="Bold"
+                                                text="&amp; Alias name is : {UserDatilsModel>/userDatails/USERALIAS}"
+                                                class="sapUiTinyMarginEnd"
+                                                visible="{= ${UserDatilsModel>/userDatails/USERALIAS} === '' ? false : true}"
+                                            />
+                                            <!-- <Text
+                                                class="sapUiSmallMarginEnd"
+                                                text="{UserDatilsModel>/userDatails/USERALIAS}"
+                                            /> -->
+                                        </HBox>
+                                    </HBox>
+                                </FlexBox>
+                                <HBox id="idHBox" binding="{TilesData>/}">
+                                    <VBox
+                                        class="tileLayout"
+                                        width="200px"
+                                    >
+                                        <HBox justifyContent="Center">
+                                            <core:Icon
+                                                class="sapUiSmallMarginTop"
+                                                src="sap-icon://it-host"
+                                                size="1.5rem"
+                                                color="#5a7da0"
+                                            />
+                                            <ObjectStatus
+                                                class="tileObjectStatus sapUiSmallMarginTop"
+                                                text="{ path: 'TilesData>access_system', formatter: '.myAccessTileCount'}"
+                                            />
+                                        </HBox>
+                                        <HBox
+                                            class="sapUiTinyMarginTop"
+                                            justifyContent="Center"
+                                        >
+                                            <ObjectStatus text="" />
+                                        </HBox>
+                                        <HBox
+                                            justifyContent="Center"
+                                            class="sapUiTinyMarginBottom"
+                                        >
+                                            <ObjectStatus
+                                                text="Access in System(s)"
+                                            />
+                                        </HBox>
+                                    </VBox>
+                                    <VBox
+                                        width="200px"
+                                        class="sapUiSmallMarginBegin tileLayout"
+                                    >
+                                        <HBox justifyContent="Center">
+                                            <core:Icon
+                                                class="sapUiSmallMarginTop"
+                                                src="sap-icon://status-inactive"
+                                                size="1.5rem"
+                                                color="#5a7da0"
+                                            />
+                                            <ObjectStatus
+                                                class="tileObjectStatus sapUiSmallMarginTop"
+                                                text="{ path: 'TilesData>acc_inactive', formatter: '.myAccessTileCount'}"
+                                            />
+                                        </HBox>
+                                        <HBox
+                                            class="sapUiTinyMarginTop"
+                                            justifyContent="Center"
+                                        >
+                                            <ObjectStatus text="" />
+                                        </HBox>
+                                        <HBox
+                                            justifyContent="Center"
+                                            class="sapUiTinyMarginBottom"
+                                        >
+                                            <ObjectStatus
+                                                text="Inactive Account(s)"
+                                            />
+                                        </HBox>
+                                    </VBox>
+                                    <VBox
+                                        width="200px"
+                                        class="sapUiSmallMarginBegin tileLayout"
+                                    >
+                                        <HBox justifyContent="Center">
+                                            <core:Icon
+                                                class="sapUiSmallMarginTop"
+                                                src="sap-icon://locked"
+                                                size="1.5rem"
+                                                color="#5a7da0"
+                                            />
+                                            <ObjectStatus
+                                                class="tileObjectStatus sapUiSmallMarginTop"
+                                                text="{ path: 'TilesData>locked_ids', formatter: '.myAccessTileCount'}"
+                                            />
+                                        </HBox>
+                                        <HBox
+                                            class="sapUiTinyMarginTop"
+                                            justifyContent="Center"
+                                        >
+                                            <ObjectStatus text="" />
+                                        </HBox>
+                                        <HBox
+                                            justifyContent="Center"
+                                            class="sapUiTinyMarginBottom"
+                                        >
+                                            <ObjectStatus
+                                                text="ID Locked in System(s)"
+                                            />
+                                        </HBox>
+                                    </VBox>
+                                    <VBox
+                                        width="200px"
+                                        class="sapUiSmallMarginBegin tileLayout"
+                                    >
+                                        <HBox justifyContent="Center">
+                                            <core:Icon
+                                                class="sapUiSmallMarginTop"
+                                                src="sap-icon://alert"
+                                                size="1.5rem"
+                                                color="#5a7da0"
+                                            />
+                                            <ObjectStatus
+                                                class="tileObjectStatus sapUiSmallMarginTop"
+                                                text="{ path: 'TilesData>ids_near_expire', formatter: '.myAccessTileCount'}"
+                                            />
+                                        </HBox>
+                                        <HBox
+                                            class="sapUiTinyMarginTop"
+                                            justifyContent="Center"
+                                        >
+                                            <ObjectStatus text="" />
+                                        </HBox>
+                                        <HBox
+                                            justifyContent="Center"
+                                            class="sapUiTinyMarginBottom"
+                                        >
+                                            <ObjectStatus
+                                                text="IDs near to expire"
+                                            />
+                                        </HBox>
+                                    </VBox>
+                                    <VBox
+                                        visible="{= ${TilesData>access} === true }"
+                                        width="175px"
+                                        class="sapUiSmallMarginBegin tileLayout"
+                                    >
+                                        <HBox justifyContent="Center">
+                                            <core:Icon
+                                                class="sapUiSmallMarginTop"
+                                                src="sap-icon://badge"
+                                                size="1.5rem"
+                                                color="#5a7da0"
+                                            />
+                                            <ObjectStatus
+                                                class="tileObjectStatus sapUiSmallMarginTop"
+                                                text="{ path: 'TilesData>ac_affid', formatter: '.myAccessTileCount'}"
+                                            />
+                                        </HBox>
+                                        <HBox
+                                            class="sapUiTinyMarginTop"
+                                            justifyContent="Center"
+                                        >
+                                            <ObjectStatus text="" />
+                                        </HBox>
+                                        <HBox
+                                            justifyContent="Center"
+                                            class="sapUiTinyMarginBottom"
+                                        >
+                                            <ObjectStatus
+                                                text="Active FFID Assignment(s)"
+                                            />
+                                        </HBox>
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                        </uxap:expandedHeading>
+                    </uxap:ObjectPageDynamicHeaderTitle>
+                </uxap:headerTitle>
+                <uxap:headerContent />
+
+                <uxap:sections>
+                    <uxap:ObjectPageSection title="Personal Information">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <f:SimpleForm
+                                        class="sapUiSizeCompact"
+                                        editable="false"
+                                        layout="ResponsiveGridLayout"
+                                        labelSpanXL="12"
+                                        labelSpanL="12"
+                                        labelSpanM="12"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="3"
+                                        columnsM="3"
+                                        singleContainerFullSize="false"
+                                    >
+                                        <f:content>
+                                            <core:Title text="Personal" />
+                                            <Label text="First Name" />
+                                            <Input
+                                                value="{UserDatilsModel>/userDatails/FIRST_NAME}"
+                                                editable="false"
+                                            />
+                                            <Label text="Last Name" />
+                                            <Input
+                                                value="{UserDatilsModel>/userDatails/LAST_NAME}"
+                                                editable="false"
+                                            />
+                                            <Label text="Employee Type" />
+                                            <Input
+                                                value="{UserDatilsModel>/userDatails/EMPTYPE}"
+                                                editable="false"
+                                            />
+                                            <core:Title
+                                                text="Reporting Details"
+                                            />
+                                            <Label text="Reporting Manager" />
+                                            <Input
+                                                value="{UserDatilsModel>/userDatails/ZRMNAME}"
+                                                editable="false"
+                                            />
+                                            <Label text="Personal Number" />
+                                            <Input
+                                                value="{UserDatilsModel>/userDatails/ZEMPID}"
+                                                editable="false"
+                                            />
+                                            <core:Title text="Department" />
+                                            <Label text="Department" />
+                                            <Input
+                                                value="{UserDatilsModel>/userDatails/ZDEPTD}"
+                                                editable="false"
+                                            />
+                                            <core:Title text="Communication" />
+                                            <Label text="Mobile Numbers" />
+                                            <Input
+                                                value="{UserDatilsModel>/userDatails/PHONE}"
+                                                editable="{=${UserDatilsModel>/userDatails/PHONE} === '' ? true: false}"
+                                            />
+                                            <Label text="Email" />
+                                            <Input
+                                                value="{UserDatilsModel>/userDatails/EMAIL}"
+                                                editable="false"
+                                            />
+                                            <core:Title
+                                                text="{ path: 'UserDatilsModel>/userDatails/EMPTYPE', formatter: '.thirdPartyUserTitle'}"
+                                            />
+                                            <Label
+                                                text="Adani Reporting MGR EMP ID"
+                                                visible="{ path: 'UserDatilsModel>/userDatails/EMPTYPE', formatter: '.thirdPartyUser'}"
+                                            />
+                                            <Input
+                                                value="NA"
+                                                editable="false"
+                                                visible="{ path: 'UserDatilsModel>/userDatails/EMPTYPE', formatter: '.thirdPartyUser'}"
+                                            />
+                                            <Label
+                                                text="Vendor Number"
+                                                visible="{ path: 'UserDatilsModel>/userDatails/EMPTYPE', formatter: '.thirdPartyUser'}"
+                                            />
+                                            <Input
+                                                value="{UserDatilsModel>/userDatails/VENDORNAME}"
+                                                editable="false"
+                                                visible="{ path: 'UserDatilsModel>/userDatails/EMPTYPE', formatter: '.thirdPartyUser'}"
+                                            />
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                    <uxap:ObjectPageSection title="System Information">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <t:Table
+                                        class="sapUiSizeCompact systeminfoTable"
+                                        id="myAccesSysTable"
+                                        visibleRowCount="4"
+                                        rows="{/myItems}"
+                                        ariaLabelledBy="title"
+                                        selectionMode="None"
+                                    >
+                                        <t:extension>
+                                            <OverflowToolbar>
+                                                <ToolbarSpacer />
+                                                <Button
+                                                    text="Refresh"
+                                                    icon="sap-icon://refresh"
+                                                    type="Emphasized"
+                                                    press="onSysInfoReferesh"
+                                                />
+                                            </OverflowToolbar>
+                                        </t:extension>
+                                        <t:columns>
+                                            <t:Column
+                                                hAlign="Begin"
+                                                autoResizable="true"
+                                            >
+                                                <VBox>
+                                                    <Text text="Connector" />
+                                                    <Text text="Id" />
+                                                </VBox>
+                                                <t:template>
+                                                    <Text text="{CONNECTOR}" />
+                                                </t:template>
+                                            </t:Column>
+                                            <t:Column
+                                                hAlign="Begin"
+                                                autoResizable="true"
+                                            >
+                                                <VBox>
+                                                    <Text text="Environment" />
+                                                    <Text text="Details" />
+                                                </VBox>
+                                                <t:template>
+                                                    <Text
+                                                        text="{ENVIRONMENT}"
+                                                    />
+                                                </t:template>
+                                            </t:Column>
+                                            <t:Column
+                                                hAlign="Begin"
+                                                autoResizable="true"
+                                            >
+                                                <VBox>
+                                                    <Text text="System" />
+                                                    <Text text="Description" />
+                                                </VBox>
+                                                <t:template>
+                                                    <Text text="{RFCDOC1}" />
+                                                </t:template>
+                                            </t:Column>
+                                            <t:Column
+                                                hAlign="Begin"
+                                                autoResizable="true"
+                                            >
+                                                <VBox>
+                                                    <Text text="Valid" />
+                                                    <Text text="From" />
+                                                </VBox>
+                                                <t:template>
+                                                    <Text
+                                                        text="{ path: 'VALID_FROM', type: 'sap.ui.model.type.Date'}"
+                                                        wrapping="false"
+                                                    />
+                                                </t:template>
+                                            </t:Column>
+                                            <t:Column
+                                                hAlign="Begin"
+                                                autoResizable="true"
+                                            >
+                                                <VBox>
+                                                    <Text text="Valid" />
+                                                    <Text text="To" />
+                                                </VBox>
+                                                <t:template>
+                                                    <Text
+                                                        text="{ path: 'VALID_TO', type: 'sap.ui.model.type.Date'}"
+                                                        wrapping="false"
+                                                    />
+                                                </t:template>
+                                            </t:Column>
+                                            <t:Column
+                                                hAlign="Begin"
+                                                autoResizable="true"
+                                            >
+                                                <VBox>
+                                                    <Text text="Lock" />
+                                                    <Text text="Status" />
+                                                </VBox>
+                                                <t:template>
+                                                    <ObjectStatus
+                                                        icon="{path: 'INACTIVE', formatter: '.formatter.weightState'}"
+                                                        state="{path: 'INACTIVE', formatter: '.formatter.weightStateColor'}"
+                                                    />
+                                                        <!-- active="{path: 'INACTIVE', formatter: '.formatter.weightEnabled'}" -->
+
+                                                    <!-- press="onUnloackUser" removed by Prasanth on 30-05-2024 -->
+                                                </t:template>
+                                            </t:Column>
+                                            <t:Column
+                                                hAlign="Begin"
+                                                autoResizable="true"
+                                            >
+                                                <VBox>
+                                                    <Text text="Validity" />
+                                                    <Text text="Status" />
+                                                </VBox>
+                                                <t:template>
+                                                    <ObjectStatus
+                                                        class="objectStatusLock"
+                                                        text="{path: 'EXPIRED', formatter: '.formatter.weightStatusText'}"
+                                                        
+                                                        icon="{path: 'EXPIRED', formatter: '.formatter.weightStateIcon'}"
+                                                        state="{path: 'EXPIRED', formatter: '.formatter.weightStateType'}"
+                                                    />
+                                                    <!-- press="onExtendSystemaccess" removed by Prasanth on 30-05-2024 -->
+                                                        <!-- active="{path: 'EXPIRED', formatter: '.formatter.weightStateColoEnabledr'}" -->
+                                                        <!-- commented by Prasanth on 30-05-2024 -->
+                                                </t:template>
+                                            </t:Column>
+                                            <t:Column
+                                                hAlign="Begin"
+                                                autoResizable="true"
+                                                visible="false"
+                                            >
+                                                <VBox>
+                                                    <Text text="Password" />
+                                                    <Text text="Reset" />
+                                                </VBox>
+                                                <t:template>
+                                                    <Button
+                                                        enabled="true"
+                                                        type="Reject"
+                                                        text="Reset"
+                                                        icon="sap-icon://status-negative"
+                                                        press="onPressPassReset"
+                                                    />
+                                                </t:template>
+                                            </t:Column>
+                                        </t:columns>
+                                    </t:Table>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                    <uxap:ObjectPageSection title="Request Details">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <IconTabBar
+                                        id="idIconTabBarInlineMode"
+                                        headerMode="Inline"
+                                        upperCase="true"
+                                        expanded="true"
+                                    >
+                                        <items>
+                                            <IconTabFilter
+                                                id="newUSERReqSet"
+                                                text="New/Change User"
+                                            >
+                                                <t:Table
+                                                    class="sapUiSizeCompact"
+                                                    id="newUSERTableReqSet"
+                                                    filter="tstFilter"
+                                                    visibleRowCount="5"
+                                                    rows="{ path: '/myItems',
+      templateShareable: false,
+        sorter: {
+        path : 'CREATED_AT',
+        group : true,
+        descending:true
+      },
+      events: {
+        filter: '.FilterNewUser'
+      }
+      }"
+                                                    ariaLabelledBy="title"
+                                                    selectionMode="None"
+                                                >
+                                                    <t:extension>
+                                                        <OverflowToolbar>
+                                                            <!--<m:Title id="title" text=""/>-->
+                                                            <ToolbarSpacer />
+                                                            <CheckBox
+                                                                text="Show Finished"
+                                                                id="showFinished"
+                                                                select="onShowFinishedReq"
+                                                            />
+                                                            <Select
+                                                                forceSelection="false"
+                                                                selectedKey="All"
+                                                                change="onDaysChange"
+                                                                id="idAgeDays"
+                                                            >
+                                                                <core:Item
+                                                                    key="All"
+                                                                    text=""
+                                                                />
+                                                                <core:Item
+                                                                    key=" 10"
+                                                                    text="Last 10 days"
+                                                                />
+                                                                <core:Item
+                                                                    key=" 30"
+                                                                    text="Last 30 days"
+                                                                />
+                                                                <core:Item
+                                                                    key=" 90"
+                                                                    text="Last 3 months"
+                                                                />
+                                                                <core:Item
+                                                                    key="180"
+                                                                    text="Last 6 months"
+                                                                />
+                                                                <core:Item
+                                                                    key="365"
+                                                                    text="Last 1 year"
+                                                                />
+                                                            </Select>
+                                                            <CheckBox
+                                                                selected="true"
+                                                                text="Show All Requests"
+                                                                id="showAll"
+                                                                select="onShowAllReq"
+                                                            />
+                                                             <Button
+                                                                text="Refresh"
+                                                                icon="sap-icon://refresh"
+                                                                type="Emphasized"
+                                                                press="onShowAllReq"
+                                                            />
+                                                        </OverflowToolbar>
+                                                    </t:extension>
+
+                                                    <t:columns>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="EXTERNAL_KEY_DIS"
+                                                        >
+                                                            <Text
+                                                                text="Request #"
+                                                            />
+                                                            <t:template>
+                                                                <!-- <Text
+                                                                    text="{EXTERNAL_KEY_DIS}"
+                                                                /> -->
+                                                                	<Link
+				text="{EXTERNAL_KEY_DIS}"
+				press="onNavToRequest" />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="REQDSCN"
+                                                        >
+                                                            <Text
+                                                                text="Request Type"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{REQDSCN}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="SYSTEMS"
+                                                        >
+                                                            <Text
+                                                                text="System"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{SYSTEMS}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="USER_NAME"
+                                                        >
+                                                            <Text
+                                                                text="User Name"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{USER_NAME} {LNAME}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            id="deliverydate"
+                                                            autoResizable="true"
+                                                            filterProperty="CREATED_AT"
+                                                        >
+                                                            <Text
+                                                                text="Created Date"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{ path: 'CREATED_AT', type: 'sap.ui.model.type.Date'}"
+                                                                    wrapping="false"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="INSTANCE_STATUS"
+                                                        >
+                                                            <Text
+                                                                text="Instance Status"
+                                                            />
+                                                            <t:template>
+                                                                <ObjectStatus
+                                                                    text="{path: 'INSTANCE_STATUS'}"
+                                                                    state="{path: 'INSTANCE_STATUS', formatter: '.formatter.AccessRequestStatusState'}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="APPROVAL_STATUS"
+                                                        >
+                                                            <Text
+                                                                text="Approval Status"
+                                                            />
+                                                            <t:template>
+                                                                <ObjectStatus
+                                                                    text="{path: 'APPROVAL_STATUS'}"
+                                                                    state="{path: 'INSTANCE_STATUS', formatter: '.formatter.AccessRequestStatusState'}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="STAGE"
+                                                        >
+                                                            <Text
+                                                                text="Stage"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{STAGE}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            width="9rem"
+                                                        >
+                                                            <Text
+                                                                text="Approver"
+                                                            />
+                                                            <t:template>
+                                                                <Button
+                                                                    text="Check Approvers" width="8rem" press="OnApproversPopUp"
+                                                                    enabled="{= ${INSTANCE_STATUS} === 'FINISHED' || ${INSTANCE_STATUS} === 'ABORTED' ? false : true}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="age"
+                                                        >
+                                                            <Text text="Age" />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{age}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                    </t:columns>
+                                                </t:Table>
+                                            </IconTabFilter>
+                                            <IconTabFilter
+                                                id="newRemoveCReqSet"
+                                                text="Lock User"
+                                            >
+                                                <t:Table
+                                                    class="sapUiSizeCompact"
+                                                    id="newRemoveReqSet"
+                                                    visibleRowCount="4"
+                                                    rows="{ path: '/myItems',
+      templateShareable: false,
+        sorter: {
+        path : 'CREATED_AT',
+        group : true,
+        descending:true
+
+      },
+      events: {
+        filter: '.FilterRemoveAccess'
+      }
+      }"
+                                                    ariaLabelledBy="title"
+                                                    selectionMode="None"
+                                                >
+                                                    <t:extension>
+                                                        <OverflowToolbar>
+                                                            <ToolbarSpacer />
+                                                            <Button
+                                                                text="Refresh"
+                                                                icon="sap-icon://refresh"
+                                                                type="Emphasized"
+                                                                press="onRemAccRefreshBut"
+                                                            />
+                                                        </OverflowToolbar>
+                                                    </t:extension>
+                                                    <t:columns>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="EXTERNAL_KEY_DIS"
+                                                        >
+                                                            <Text
+                                                                text="Request NO"
+                                                            />
+                                                            <t:template>
+                                                                <!-- <Text
+                                                                    text="{EXTERNAL_KEY_DIS}"
+                                                                /> -->
+                                                                <Link
+				text="{EXTERNAL_KEY_DIS}"
+				press="onNavToRequest" />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="REQDSCN"
+                                                        >
+                                                            <Text
+                                                                text="Request Type"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{REQDSCN}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="USER_NAME"
+                                                        >
+                                                            <Text
+                                                                text="User Name"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{USER_NAME} {LNAME}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="CREATED_AT"
+                                                        >
+                                                            <Text
+                                                                text="Created Date"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{ path: 'CREATED_AT', type: 'sap.ui.model.type.Date'}"
+                                                                    wrapping="false"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="INSTANCE_STATUS"
+                                                        >
+                                                            <Text
+                                                                text="Status"
+                                                            />
+                                                            <t:template>
+                                                                <ObjectStatus
+                                                                    text="{path: 'INSTANCE_STATUS'}"
+                                                                    state="{path: 'INSTANCE_STATUS', formatter: '.formatter.AccessRequestStatusState'}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="STAGE"
+                                                        >
+                                                            <Text
+                                                                text="Stage"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{STAGE}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            width="9rem"
+                                                        >
+                                                            <Text
+                                                                text="Approver"
+                                                            />
+                                                            <t:template>
+                                                                <Button
+                                                                    text="Check Approvers"
+                                                                    press="OnRemApproversPopUp"
+                                                                    enabled="{= ${INSTANCE_STATUS} === 'FINISHED' || ${INSTANCE_STATUS} === 'ABORTED' ? false : true}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                    </t:columns>
+                                                </t:Table>
+                                            </IconTabFilter>
+                                            <IconTabFilter
+                                                id="newFireCReqSet"
+                                                text="Firefighter Request"
+                                            >
+                                                <t:Table
+                                                    class="sapUiSizeCompact"
+                                                    id="newFireReqSet"
+                                                    visibleRowCount="4"
+                                                    rows="{ path: '/myItems',
+      templateShareable: false,
+        sorter: {
+        path : 'CREATED_AT',
+        group : true,
+        descending:true
+
+      },
+      events: {
+        filter: '.tsFireFightFilter'
+      }
+      }"
+                                                    ariaLabelledBy="title"
+                                                    selectionMode="None"
+                                                >
+                                                    <t:extension>
+                                                        <OverflowToolbar>
+                                                            <ToolbarSpacer />
+                                                            <Button
+                                                                text="Refresh"
+                                                                icon="sap-icon://refresh"
+                                                                type="Emphasized"
+                                                                press="onNewFFRefreshBut"
+                                                            />
+                                                        </OverflowToolbar>
+                                                    </t:extension>
+                                                    <t:columns>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="EXTERNAL_KEY_DIS"
+                                                        >
+                                                            <Text
+                                                                text="Request NO"
+                                                            />
+                                                            <t:template>
+                                                                <!-- <Text
+                                                                    text="{EXTERNAL_KEY_DIS}"
+                                                                /> -->
+                                                                <Link
+				text="{EXTERNAL_KEY_DIS}"
+				press="onNavToRequest" />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="REQDSCN"
+                                                        >
+                                                            <Text
+                                                                text="Request Type"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{REQDSCN}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="USER_NAME"
+                                                        >
+                                                            <Text
+                                                                text="User Name"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{USER_NAME} {LNAME}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="CREATED_AT"
+                                                        >
+                                                            <Text
+                                                                text="Created Date"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{ path: 'CREATED_AT', type: 'sap.ui.model.type.Date'}"
+                                                                    wrapping="false"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="INSTANCE_STATUS"
+                                                        >
+                                                            <Text
+                                                                text="Status"
+                                                            />
+                                                            <t:template>
+                                                                <ObjectStatus
+                                                                    text="{path: 'INSTANCE_STATUS'}"
+                                                                    state="{path: 'INSTANCE_STATUS', formatter: '.formatter.AccessRequestStatusState'}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            filterProperty="STAGE"
+                                                        >
+                                                            <Text
+                                                                text="Stage"
+                                                            />
+                                                            <t:template>
+                                                                <Text
+                                                                    text="{STAGE}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                        <t:Column
+                                                            hAlign="Begin"
+                                                            autoResizable="true"
+                                                            width="9rem"
+                                                        >
+                                                            <Text
+                                                                text="Approver"
+                                                            />
+                                                            <t:template>
+                                                                <Button
+                                                                    text="Check Approvers"
+                                                                    press="OnFFApproversPopUp"
+                                                                    enabled="{= ${INSTANCE_STATUS} === 'FINISHED' || ${INSTANCE_STATUS} === 'ABORTED' ? false : true}"
+                                                                />
+                                                            </t:template>
+                                                        </t:Column>
+                                                    </t:columns>
+                                                </t:Table>
+                                            </IconTabFilter>
+                                        </items>
+                                    </IconTabBar>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                    <uxap:ObjectPageSection id="idFFAssignTab" title="Firefighter Assignment">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <Table
+                                        id="idTablefireFighter"
+                                        items="{/myItems}"
+                                        class="sapUiSizeCompact"
+                                        visible="true"
+                                        inset="false"
+                                    >
+                                        <columns>
+                                            <Column width="10em">
+                                                <Text text="System" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Firefighter ID" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Valid From" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Valid To" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Owner" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Remaining Days" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="8em"
+                                                visible="false"
+                                            >
+                                            <!-- Extend Validity Column visible set to false - by Prasanth on 30-05-2024 -->
+                                                <Text text="Extend Validity" />
+                                            </Column>
+                                            <Column />
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem
+                                                vAlign="Middle"
+                                                type="Inactive"
+                                            >
+                                                <cells>
+                                                    <Text text="{CONNECTOR}" />
+                                                    <Text text="{FFOBJECT}" />
+                                                    <Text
+                                                        text="{path:'VALID_FROM'}"
+                                                    />
+                                                    <Text
+                                                        text="{path:'VALID_TO'}"
+                                                    />
+                                                    <Text text="{OWNER}" />
+                                                    <Text text="{days}" />
+                                                    <Button
+                                                        text="Extend"
+                                                        type="Reject"
+                                                        press="onPressFFExtendVal"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                </uxap:sections>
+            </uxap:ObjectPageLayout>
+        </content>
+    </Page>
+</mvc:View>

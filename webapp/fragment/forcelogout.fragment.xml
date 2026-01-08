@@ -1,0 +1,18 @@
+<core:FragmentDefinition controllerName="inforUI.controller.Upload" xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Dialog id="helloDialogRole" afterClose="onAfterClosePopup" title="User already login">
+		<content>
+			<form:SimpleForm>
+				<form:content>
+					<VBox>
+						<Label text="User already login Press Go for force logout" labelFor="idComboBoxLob"/>
+					</VBox>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+		<buttons>
+			<Button text="Yes" press="onGo"/>
+			<Button text="Cancel" press="onCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

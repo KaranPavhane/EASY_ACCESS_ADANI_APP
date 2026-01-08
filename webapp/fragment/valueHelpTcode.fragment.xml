@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+	draggable="true"
+	resizable="true"
+		title="Products"
+		items="{myAccess>/TCodeInfoSet}"
+		search=".onValueHelpDialogSearch"
+		confirm=".onValueHelpDialogClose"
+		cancel=".onValueHelpDialogClose">
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{Name}"
+			description="{ProductId}" />
+	</SelectDialog>
+</core:FragmentDefinition>

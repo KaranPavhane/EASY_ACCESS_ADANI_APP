@@ -1,0 +1,49 @@
+<core:FragmentDefinition controllerName="inforUI.controller.Upload1" xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Dialog id="RoleDialog1" title="Existing Roles for the User">
+		<content>
+			<form:SimpleForm>
+				<form:content>
+					<FlexBox justifyContent="Center" alignContent="Center">
+						<Table id="idExistRole" items="{ExistRoleModel>/RoleData}" class="sapUiSizeCompact" mode="MultiSelect" inset="false">
+							<columns>
+								<Column>
+									<Text text="Role"/>
+								</Column>
+								<Column>
+									<Text text="Role Description"/>
+								</Column>
+								<Column>
+									<Text text="System"/>
+								</Column>
+								<Column>
+									<Text text="System Description"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem vAlign="Middle" type="Inactive">
+									<cells>
+										<Text text="{ExistRoleModel>role}"/>
+									</cells>
+									<cells>
+										<Text text="{ExistRoleModel>Desc}"/>
+									</cells>
+									<cells>
+										<Text text="{ExistRoleModel>System}"/>
+									</cells>
+									<cells>
+										<Text text="{ExistRoleModel>sysDesc}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</FlexBox>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+		<buttons>
+			<Button text="Cancel" press="closeExistRoleonPress"/>
+			<Button text="Add Roles" press="onExistRoleAddPress" type="Emphasized"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

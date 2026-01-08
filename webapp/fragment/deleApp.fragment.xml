@@ -1,0 +1,123 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	xmlns:uxap="sap.uxap" xmlns:t="sap.ui.table" xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<uxap:ObjectPageLayout showTitleInHeaderContent="true">
+			<uxap:headerTitle>
+				<uxap:ObjectPageDynamicHeaderTitle>
+					<uxap:expandedHeading>
+						<Title text="Active Queries" wrapping="true"/>
+					</uxap:expandedHeading>
+					<uxap:expandedContent>
+						<Text text="Approval Delegation All()"/>
+					</uxap:expandedContent>
+					<!--<uxap:actions>-->
+					<!--<SearchField placeholder="ITGT Card" width="70%" search="onCardSearch"/>-->
+					<!--	<Button id="idCloaseITGTLBtn1" visible="true" type="Accept" press="handleDashboardSetting('ITGT',$event)" text="Submit"-->
+					<!--		icon="sap-icon://save"/>-->
+					<!--	<Button id="idCloaseITGTLBtn" visible="true" type="Reject" press="handleDashboardSetting('ITGT',$event)" text="Clear All"-->
+					<!--		icon="sap-icon://settings"/>-->
+					<!--</uxap:actions>-->
+				</uxap:ObjectPageDynamicHeaderTitle>
+			</uxap:headerTitle>
+		</uxap:ObjectPageLayout>
+		<Panel id="panesdfsdfl2" backgroundDesign="Solid" visible="true" height="" expandable="false" expanded="true" headerText="All Delegation"
+			width="auto" class="sapUiResponsiveMargin">
+			<content>
+			
+				<!--<t:Table class="sapUiSizeCompact" id="table11" rows="{/ProductCollection}" selectionMode="MultiToggle" visibleRowCount="7"-->
+				<!--	ariaLabelledBy="title">-->
+				<!--	<t:extension>-->
+				<!--		<OverflowToolbar>-->
+				<!--			<Button id="button111" type="Accept" icon="sap-icon://detail-view" text="View" press="buttonPress"/>-->
+				<!--			<Button id="button11" type="Emphasized" icon="sap-icon://permission" text="Open" press="buttonPress"/>-->
+				<!--			<Select id="country1" selectedKey="{Country}">-->
+				<!--				<items>-->
+				<!--					<core:Item text="" key="England"/>-->
+				<!--				</items>-->
+				<!--			</Select>-->
+				<!--			<Button id="button21" type="Emphasized" icon="sap-icon://circle-task-2" text="Delegate" press="buttonPress"/>-->
+				<!--			<Button id="button31" type="Negative" icon="sap-icon://delete" text="Delete" press="buttonPress"/>-->
+				<!--<Button id="button41" type="Neutral" icon="sap-icon://endoscopy" text="Simulation" press="buttonPress"/>-->
+				<!--		</OverflowToolbar>-->
+				<!--	</t:extension>-->
+				<!--	<t:columns>-->
+				<!--		<t:Column width="11rem">-->
+				<!--			<Label text="Approver ID"/>-->
+				<!--			<t:template>-->
+				<!--				<Text text="{Name}" wrapping="false"/>-->
+				<!--			</t:template>-->
+				<!--		</t:Column>-->
+				<!--		<t:Column width="11rem">-->
+				<!--			<Label text="Delegated Approvat ID"/>-->
+				<!--			<t:template>-->
+				<!--				<Text text="{Name}" wrapping="false"/>-->
+				<!--			</t:template>-->
+				<!--		</t:Column>-->
+				<!--		<t:Column width="11rem">-->
+				<!--			<Label text="Valid From"/>-->
+				<!--			<t:template>-->
+				<!--				<Text text="{Name}" wrapping="false"/>-->
+				<!--			</t:template>-->
+				<!--		</t:Column>-->
+				<!--		<t:Column width="11rem">-->
+				<!--			<Label text="Valid To"/>-->
+				<!--			<t:template>-->
+				<!--				<Text text="{Name}" wrapping="false"/>-->
+				<!--			</t:template>-->
+				<!--		</t:Column>-->
+				<!--		<t:Column width="11rem">-->
+				<!--			<Label text="Status"/>-->
+				<!--			<t:template>-->
+				<!--				<Text text="{Name}" wrapping="false"/>-->
+				<!--			</t:template>-->
+				<!--		</t:Column>-->
+				<!--	</t:columns>-->
+				<!--</t:Table>-->
+			</content>
+		</Panel>
+		<f:SimpleForm >
+			<f:content></f:content>
+		</f:SimpleForm>
+	</VBox>
+	<!--<Panel headerText="Active Queries" class="sapUiLargeMarginTop">-->
+	<!--	<Title text="Approval Delegation (All)"></Title>-->
+	<!--	<Table>-->
+	<!--		<headerToolbar>-->
+	<!--			<OverflowToolbar>-->
+	<!--				<content>-->
+	<!--					<ToolbarSpacer/>-->
+	<!--					<Button text="Delegate" type="Emphasized"></Button>-->
+	<!--				</content>-->
+	<!--			</OverflowToolbar>-->
+	<!--		</headerToolbar>-->
+	<!--		<columns>-->
+	<!--			<Column>-->
+	<!--				<Text text="Approver ID"></Text>-->
+	<!--			</Column>-->
+	<!--			<Column>-->
+	<!--				<Text text="Deegated Approver ID"></Text>-->
+	<!--			</Column>-->
+	<!--			<Column>-->
+	<!--				<Text text="Valid From"></Text>-->
+	<!--			</Column>-->
+	<!--			<Column>-->
+	<!--				<Text text="Valid To"></Text>-->
+	<!--			</Column>-->
+	<!--			<Column>-->
+	<!--				<Text text="Status"></Text>-->
+	<!--			</Column>-->
+	<!--		</columns>-->
+	<!--<items>-->
+	<!--	<ColumnListItem>-->
+	<!--		<cells>-->
+	<!--			<Text text="{so_item}"></Text>-->
+	<!--			<Text text="{>material}"></Text>-->
+	<!--			<Text text="{plant}"></Text>-->
+	<!--			<Text text="{qty}"></Text>-->
+	<!--			<Text text="{qu}"></Text>-->
+	<!--		</cells>-->
+	<!--	</ColumnListItem>-->
+	<!--</items>-->
+	<!--	</Table>-->
+	<!--</Panel>-->
+</core:FragmentDefinition>

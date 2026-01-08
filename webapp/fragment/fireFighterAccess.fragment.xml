@@ -1,0 +1,394 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" height="100%"
+	xmlns:t="sap.ui.table" xmlns:dnd="sap.ui.core.dnd" displayBlock="true" xmlns:core="sap.ui.core">
+	<Page title="Firefigher Access1" titleLevel="H1" backgroundDesign="Transparent" floatingFooter="true" showFooter="true">
+		<content width="90%">
+			<VBox class="sapUiSmallMargin">
+				<f:SimpleForm class="sapUiSizeCompact" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+					labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+					singleContainerFullSize="false">
+					<f:content>
+						<core:Title text=""/>
+						<Label text="Request For"/>
+						<ComboBox  id="idFFComboUserType" selectionChange="onSuerSelectFF">
+							<core:Item key="mn" text=" "/>
+							<core:Item key="self" text="Self"/>
+							<core:Item key="reportee" text="My Reportee"/>
+							<core:Item key="others" text="Others"/>
+						</ComboBox>
+						<Label text="User"/>
+						<!--<ComboBox id="idComboUser2FF" editable="false" items="{path:'/myItems'}" width="75%" selectionChange="FFuser">
+							<core:ListItem text="{USER_ID}" key="{USER_ID}"/>
+							<core:Item text="{USER_ID}" key="{USER_ID}"/>
+						</ComboBox>-->
+						<VBox>
+							<Input id="idComboUser2FF" showValueHelp="true" editable="false" valueHelpRequest="onValueHelpUsers"/>
+							<Text id="idNameFF"></Text>
+						</VBox>
+						<core:Title text=" "/>
+						<Label text=" Description"/>
+						<TextArea required="true" id="idFfidText" placeholder=" " valueStateText="Please Enter Access Requirement" maxLength="120" rows="3" cols="30"/>
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+			<Wizard id="CreateProductWizardId261" showNextButton="false" finishButtonText="Finish" currentStep="idFireUser"
+				class=" sapUiResponsivePadding--header sapUiResponsivePadding--content">
+				<WizardStep id="idFireUserFF1" nextStep="ProductTypeStep3" title="User Information" activate="onActivate">
+					<MessageStrip showIcon="true"
+						text="Enter your Personal Information. This information is saved in all the SAP systems and will be utilized for further communications such as new password, etc., Ensure you provide the right details!"
+						class="sapUiMediumMarginTop"/>
+					<f:SimpleForm class="sapUiSizeCompact" id="idFFPersonal1" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4"
+						labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3"
+						columnsL="3" columnsM="3" singleContainerFullSize="false">
+						<f:content>
+							<core:Title text="Personal"/>
+							<Label required="true" text="First Name"/>
+							<Input id="idFfFName" value="{userInfo1>/FIRST_NAME}"    width="90%" change="onValidatationCheck"
+								valueStateText="Please Enter First Name" valueState="Error"></Input>
+							<Label required="true" text="Last Name"/>
+							<Input id="idFfLName" value="{userInfo1>/LAST_NAME}"    width="90%" change="onValidatationCheck"
+								valueStateText="Please Enter Last Name" valueState="Error"></Input>
+							<Label required="true" text="Employee Type"/>
+							<Input id="idFfEmpType" value="{userInfo1>/EMPTYPE}"    width="90%" change="onValidatationCheck"
+								valueStateText="Please Enter Emp Type" valueState="Error"></Input>
+							<core:Title text="Reporting Details"/>
+							<Label required="true" text="Reporting Manager"/>
+							<Input id="idFfRepMana" value="{userInfo1>/ZRMID}"    width="90%" change="onValidatationCheck"
+								valueStateText="Please Enter Reporting Manager " valueState="Error"></Input>
+							<Label required="true" text="Personal Number"/>
+							<Input id="idFfPNumber" value="{userInfo1>/PHONE}"    width="90%" change="onValidatationCheck"
+								valueStateText="Please Enter Personal Number " valueState="Error"></Input>
+							<core:Title text="Department"/>
+							<Label required="true" text="Department"/>
+							<Input id="idFfDept" value="{userInfo1>/DEPARTMENT}"    width="90%" change="onValidatationCheck"
+								valueStateText="Please Enter Department " valueState="Error"></Input>
+							<core:Title text="Communcation"/>
+							<Label required="true" text="Mobile Numbar"/>
+							<Input id="idFfMNumber" value="{userInfo1>/PHONE}"    width="90%" change="onValidatationCheck"
+								valueStateText="Please Enter Mobile Numbar " valueState="Error"></Input>
+							<Label required="true" text="Email"/>
+							<Input id="idFfEmail" value="{userInfo1>/EMAIL}"    width="90%" change="onValidatationCheck"
+								valueStateText="Please Enter Email" valueState="Error"></Input>
+							<core:Title text="3rd Party User Details"/>
+							<Label required="true" text="Adani Reporting MGR EMP ID"/>
+							<Input id="idFfEmpId" value="{userInfo1>/ZEMPID}"    width="90%" change="onValidatationCheck"
+								valueStateText="Please Enter EMP ID" valueState="Error"></Input>
+							<Label required="true" text="Vendor Number"/>
+							<Input id="idFfVenNum" value="{userInfo1>/FIRST_NAME}"    width="90%" change="onValidatationCheck"
+								valueStateText="Please Enter Vendor Number" valueState="Error"></Input>
+						</f:content>
+					</f:SimpleForm>
+					<f:SimpleForm class="sapUiSizeCompact">
+						<Toolbar width="100%">
+							<Button type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:System/Landscape Information" press="onNextStepFireFighter"
+								textDirection="LTR"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</f:SimpleForm>
+				</WizardStep>
+				<WizardStep id="ProductInfoStep26" title="System/Landscape Information" activate="onActivate">
+					<HBox renderType="Bare">
+						<Table class="sapUiSizeCompact" id="table1FF" items="{ path: 'SysLandInfoFF>/SysLaData' }" beforeOpenContextMenu="onBeforeOpenContextMenu"
+							mode="SingleSelectMaster">
+							<contextMenu>
+								<Menu>
+									<MenuItem text="Move to Selected Products" press="moveToSelectedProductsTable"/>
+								</Menu>
+							</contextMenu>
+							<headerToolbar>
+								<OverflowToolbar>
+									<Title text="Available System"/>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column>
+									<Text class="myCustomText" text="System"/>
+								</Column>
+								<Column>
+									<Text class="myCustomText" text="Description"/>
+								</Column>
+							</columns>
+							<dragDropConfig>
+								<dnd:DragInfo groupName="available2selected" sourceAggregation="items"/>
+								<dnd:DropInfo groupName="selected2available" drop="onDropAvailableSysLandSFF"/>
+							</dragDropConfig>
+							<ColumnListItem class="myCustomText" id="detailsListItem1FF">
+								<cells>
+									<Text text="{SysLandInfoFF>CONNECTOR}" wrapping="false"/>
+									<Text text="{SysLandInfoFF>RFCDOC1}" wrapping="false"/>
+								</cells>
+							</ColumnListItem>
+						</Table>
+						<!--<VBox justifyContent="Center" class="sapUiTinyMarginBeginEnd">-->
+						<!--	<Button class="sapUiTinyMarginBottom" icon="sap-icon://navigation-right-arrow" tooltip="Move to selected" press="moveToTable2"/>-->
+						<!--	<Button icon="sap-icon://navigation-left-arrow" tooltip="Move to available" press="moveToTable1"/>-->
+						<!--</VBox>-->
+						<Table class="sapUiSizeCompact" id="table2FF" items="{ path: 'SeleSysLandInfoFF>/sleSysLaData' }">
+							<headerToolbar>
+								<OverflowToolbar>
+									<Title text="Selected System"/>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column>
+									<Text class="myCustomText" text="System"/>
+								</Column>
+								<Column>
+									<Text class="myCustomText" text="Description"/>
+								</Column>
+							</columns>
+							<dragDropConfig>
+								<dnd:DragInfo groupName="selected2available" sourceAggregation="items"/>
+								<dnd:DropInfo groupName="available2selected" targetAggregation="items" dropPosition="Between" drop="onDropAvailableSysLandFF"/>
+								<dnd:DragDropInfo sourceAggregation="items" targetAggregation="items" dropPosition="Between" drop="onDropAvailableSysLandFF"/>
+							</dragDropConfig>
+							<ColumnListItem class="myCustomText">
+								<cells>
+									<Text text="{SeleSysLandInfoFF>CONNECTOR}" wrapping="false"/>
+									<Text text="{SeleSysLandInfoFF>RFCDOC1}" wrapping="false"/>
+								</cells>
+							</ColumnListItem>
+						</Table>
+					</HBox>
+					<f:SimpleForm class="sapUiSizeCompact">
+						<Toolbar width="100%">
+							<Button type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Firefighter IDs" press="onNextStepFireFighter" textDirection="LTR"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</f:SimpleForm>
+				</WizardStep>
+				<WizardStep id="OptionalInfoStep26" title="Firefighter IDs" activate="onActivate">
+					<HBox renderType="Bare">
+						<t:Table id="DragTableFireFighterID" selectionMode="Single" ariaLabelledBy="title" rows="{FireFiIds>/FireFiId}" visibleRowCount="5">
+							<t:extension>
+								<OverflowToolbar>
+									<Title text="Firefighter IDs Available"/>
+									<ToolbarSpacer/>
+								</OverflowToolbar>
+							</t:extension>
+							<t:columns>
+								<t:Column width="11rem">
+									<Label text="Firefighter IDs"/>
+									<t:template>
+										<Text text="{FireFiIds>FFOBJECT}" wrapping="false"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="11rem">
+									<Label text="Description"/>
+									<t:template>
+										<Text text="{FireFiIds>APP_TYPE}" wrapping="false"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="11rem">
+									<Label text="System"/>
+									<t:template>
+										<Text text="{FireFiIds>CONNECTOR}" wrapping="false"/>
+									</t:template>
+								</t:Column>
+							</t:columns>
+							<t:dragDropConfig>
+								<dnd:DragInfo groupName="moveToTable2" sourceAggregation="rows" dragStart="FFselectedIdDrop"/>
+								<dnd:DropInfo groupName="moveToTable1" drop="FFselectedIdDrop"/>
+							</t:dragDropConfig>
+						</t:Table>
+						<VBox justifyContent="Center" class="sapUiTinyMarginBeginEnd">
+							<!--<Button class="sapUiTinyMarginBottom" icon="sap-icon://navigation-right-arrow" tooltip="Move to selected" press="moveToTable2"/>-->
+							<!--<Button icon="sap-icon://navigation-left-arrow" tooltip="Move to available" press="moveToTable1"/>-->
+						</VBox>
+						<t:Table id="DropTableFireFighterID" selectionMode="Single" ariaLabelledBy="title2" rows="{FireFiIdsel>/FireFiId}" visibleRowCount="5"
+							noData="Please drag-and-drop products here.">
+							<t:extension>
+								<OverflowToolbar>
+									<Title text="Firefighter IDs Selected"/>
+									<ToolbarSpacer/>
+								</OverflowToolbar>
+							</t:extension>
+							<t:columns>
+								<t:Column width="11rem">
+									<Label text="Firefighter ID"/>
+									<t:template>
+										<Text text="{FireFiIdsel>FFOBJECT}" wrapping="false"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="11rem">
+									<Label text="Description"/>
+									<t:template>
+										<Text text="{FireFiIdsel>APP_TYPE}" wrapping="false"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="11rem">
+									<Label text="System"/>
+									<t:template>
+										<Text text="{FireFiIdsel>CONNECTOR}" wrapping="false"/>
+									</t:template>
+								</t:Column>
+							</t:columns>
+							<t:dragDropConfig>
+								<dnd:DragInfo groupName="moveToTable1" sourceAggregation="rows" dragStart="onDragStart"/>
+								<dnd:DropInfo groupName="moveToTable2" targetAggregation="rows" dropPosition="Between" drop="FFselectedId"/>
+								<dnd:DragDropInfo sourceAggregation="rows" targetAggregation="rows" dropPosition="Between" dragStart="onDragStart" drop="FFselectedId"/>
+							</t:dragDropConfig>
+						</t:Table>
+					</HBox>
+					<f:SimpleForm class="sapUiSizeCompact">
+						<Toolbar width="100%">
+							<Button type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Firefighter Validity" press="onNextStepFireFighter" textDirection="LTR"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</f:SimpleForm>
+				</WizardStep>
+				<WizardStep id="PricingStep12656" title="Firefighter Validity" activate="onActivate">
+					<MessageStrip showIcon="true"
+						text="Attach the files that are relavant to this request. For eg: Approval emails etc., either in PDF format or JPG Format. You need not attach the list of transaction codes again here."
+						class="sapUiMediumMarginTop"/>
+					<Table id="idFFValidTable" class="sapUiSizeCompact" items="{FFVlid>/ffvData}" visible="true" mode="MultiSelect" inset="false">
+						<headerToolbar></headerToolbar>
+						<columns>
+							<Column>
+								<Text text="Firefighter IDs"/>
+							</Column>
+							<Column hAlign="Center" width="12em" minScreenWidth="Tablet" demandPopin="true">
+								<Text text="System"/>
+							</Column>
+							<Column hAlign="End">
+								<Text text="Valid From"/>
+							</Column>
+							<Column hAlign="End">
+								<Text text="Valid To"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem vAlign="Middle" type="Inactive">
+								<cells>
+									<Input value="{FFVlid>FFOBJECT}"/>
+									<Input value="{FFVlid>CONNECTOR}"/>
+									<DatePicker id="idFFDateFrom" value="{path:'FFVlid>VALID_FROM', type: 'sap.ui.model.type.Date'}" valueFormat="yyyy-MM-dd"
+										displayFormat="long" change="handleChange"/>
+									<DatePicker id="idFFDateTo" value="{path:'FFVlid>VALID_TO', type: 'sap.ui.model.type.Date'}" valueFormat="yyyy-MM-dd" displayFormat="long"
+										change="handleChange1"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<f:SimpleForm class="sapUiSizeCompact">
+						<Toolbar width="100%">
+							<Button id="idFfidUpdSelBut" type="Emphasized" text="Update FFID Information" press="onFfidUpdateSeleTable" textDirection="LTR"/>
+						</Toolbar>
+					</f:SimpleForm>
+					<f:SimpleForm class="sapUiSizeCompact">
+						<Toolbar width="100%">
+							<Button type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Request Submission" press="onNextStepFireFighter" textDirection="LTR"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</f:SimpleForm>
+				</WizardStep>
+			<WizardStep id="PricingStep12656" title="Firefighter Validity" activate="onActivate">
+					<MessageStrip showIcon="true"
+						text="Attach the files that are relavant to this request. For eg: Approval emails etc., either in PDF format or JPG Format. You need not attach the list of transaction codes again here."
+						class="sapUiMediumMarginTop"/>
+					<Table id="idFFValidTable" class="sapUiSizeCompact" items="{FFVlid>/ffvData}" visible="true" mode="MultiSelect" inset="false">
+						<headerToolbar></headerToolbar>
+						<columns>
+							<Column>
+								<Text text="Firefighter IDs"/>
+							</Column>
+							<Column hAlign="Center" width="12em" minScreenWidth="Tablet" demandPopin="true">
+								<Text text="System"/>
+							</Column>
+							<Column hAlign="End">
+								<Text text="Valid From"/>
+							</Column>
+							<Column hAlign="End">
+								<Text text="Valid To"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem vAlign="Middle" type="Inactive">
+								<cells>
+									<Input value="{FFVlid>FFOBJECT}"/>
+									<Input value="{FFVlid>CONNECTOR}"/>
+									<DatePicker id="idFFDateFrom" value="{path:'FFVlid>VALID_FROM', type: 'sap.ui.model.type.Date'}" valueFormat="yyyy-MM-dd"
+										displayFormat="long" change="handleChange"/>
+									<DatePicker id="idFFDateTo" value="{path:'FFVlid>VALID_TO', type: 'sap.ui.model.type.Date'}" valueFormat="yyyy-MM-dd" displayFormat="long"
+										change="handleChange1"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<f:SimpleForm class="sapUiSizeCompact">
+						<Toolbar width="100%">
+							<Button id="idFfidUpdSelBut" type="Emphasized" text="Update FFID Information" press="onFfidUpdateSeleTable" textDirection="LTR"/>
+						</Toolbar>
+					</f:SimpleForm>
+					<f:SimpleForm class="sapUiSizeCompact">
+						<Toolbar width="100%">
+							<Button type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Request Submission" press="onNextStepFireFighter" textDirection="LTR"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</f:SimpleForm>
+				</WizardStep>
+				<WizardStep id="PricingStep226" title="Request Submission" activate="onActivate">
+					<MessageStrip showIcon="true"/>
+					<!--text="Review your request here before submitting it. We have consolidated all your requirement in a single screen for you to quickly review-->
+					<!--before the actual submission. Once the request is submitted, it will be approved by various approvers. You w+ ill be notified at every-->
+					<!--stage." class="sapUiMediumMarginTop"/>-->
+					<f:SimpleForm class="sapUiSizeCompact" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+						labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+						singleContainerFullSize="false">
+						<f:content>
+							<core:Title text=""/>
+							<Label text="User ID"/>
+							<Text text="{userInfo1>/USER_ID}"/>
+							<Label text="First Name"/>
+							<Text text="{userInfo1>/FIRST_NAME}"/>
+							<Label text="Last Name"/>
+							<Text text="{userInfo1>/LAST_NAME}"/>
+							<core:Title text=""/>
+							<Label text="Request raised by"/>
+							<Text text="{navModel>/oResult/user_id}"/>
+							<Label text="Raised on"/>
+							<Text text="{REVIEWmODEL>/Date}"/>
+						</f:content>
+					</f:SimpleForm>
+					<Table id="idFfidSelTable" items="{ path: '/FfidSelData'}" class="sapUiSizeCompact" visible="true" mode="None" inset="false">
+						<columns>
+							<Column>
+								<Text text="Firefighter ID"/>
+							</Column>
+							<Column >
+								<Text text="System"/>
+							</Column>
+							<Column>
+								<Text text="Valid From"/>
+							</Column>
+							<Column>
+								<Text text="Valid To"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem vAlign="Middle" type="Inactive">
+								<cells>
+									<Text text="{FFOBJECT}"/>
+									<Text text="{CONNECTOR}"/>
+									<Text id="idFFFinalDateFrom" text="{VALID_FROM}"/>
+									<Text text=""/>
+									<Text id="idFFFinalDateTo" text="{VALID_TO}"/>
+									<Text text=""/>
+									<Input></Input>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<f:SimpleForm class="sapUiSizeCompact">
+						<Toolbar width="100%">
+							<Label id="lblFisdsleNrgrame3fe4" text="" class="filename"/>
+							<ToolbarSpacer/>
+							<Button type="Accept" icon="sap-icon://complete" text="Submit" press="onSubmitFF" textDirection="LTR"/>
+							<Button type="Emphasized" icon="sap-icon://save" text="Save" press="onSubmitFF" textDirection="LTR"/>
+							<Button type="Reject" icon="sap-icon://cancel" text="Cancel" textDirection="LTR"/>
+						</Toolbar>
+					</f:SimpleForm>
+				</WizardStep>
+			</Wizard>
+		</content>
+	</Page>
+</core:FragmentDefinition>

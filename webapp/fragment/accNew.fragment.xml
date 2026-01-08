@@ -1,0 +1,101 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+	<l:VerticalLayout>
+		<l:content>
+			<FlexBox alignContent="Center" justifyContent="Center" width="100%">
+				<VBox width="60%">
+					<Panel>
+						<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0">
+							<f:content>
+								<Text text="Access Requirement"></Text>
+								<TextArea rows="4"></TextArea>
+							</f:content>
+						</f:SimpleForm>
+					</Panel>
+				</VBox>
+				<VBox width="500px">
+					<Panel headerText="Request Details">
+						<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12"
+							adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1">
+							<f:content>
+								<Label text="Request Type"/>
+								<!--<Input></Input>-->
+								<Select items="{path:'/reqType'}">
+									<core:Item text="{type}"></core:Item>
+								</Select>
+								<Label text="Request for"/>
+								<Input></Input>
+								<Label text="SAP ID"/>
+								<Input></Input>
+								<Label text="Business Process1"/>
+								<!--<Input></Input>-->
+								<Select>
+									<core:Item></core:Item>
+								</Select>
+							</f:content>
+						</f:SimpleForm>
+					</Panel>
+				</VBox>
+			</FlexBox>
+		</l:content>
+	</l:VerticalLayout>
+	<IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter text="User Details">
+				<Text text="Info content goes here ..."/>
+			</IconTabFilter>
+			<IconTabSeparator icon=""/>
+			<IconTabFilter text="SAP Server">
+				<Table backgroundDesign="Transparent">
+					<headerToolbar>
+						<OverflowToolbar>
+							<content>
+								<Button text="Add" class="sapUiSmallMargin" press="onResponsiveButtonPress">
+									<dependents>
+										<core:Fragment fragmentName="com.new.prjt.znew_arm_prjt.view.responsiveButton" type="XML"/>
+									</dependents>
+								</Button>
+								<Button text="Remove" enabled="false"></Button>
+								<Button text="Existing Assignment" press="responsiveSystemButPress"></Button>
+								<Button text="Import roles"></Button>
+								<Button text="Simulation"></Button>
+							</content>
+						</OverflowToolbar>
+					</headerToolbar>
+					<columns>
+						<Column>
+							<Text text="Assignment"></Text>
+						</Column>
+						<Column>
+							<Text text="System Description"></Text>
+						</Column>
+						<Column>
+							<Text text="Provisoning Action"></Text>
+						</Column>
+						<Column>
+							<Text text="Valid From"></Text>
+						</Column>
+						<Column>
+							<Text text="Valid To"></Text>
+						</Column>
+					</columns>
+					<!--<items>-->
+					<!--	<ColumnListItem>-->
+					<!--		<cells>-->
+					<!--			<Text text="{so_item}"></Text>-->
+					<!--			<Text text="{>material}"></Text>-->
+					<!--			<Text text="{plant}"></Text>-->
+					<!--			<Text text="{qty}"></Text>-->
+					<!--			<Text text="{qu}"></Text>-->
+					<!--		</cells>-->
+					<!--	</ColumnListItem>-->
+					<!--</items>-->
+				</Table>
+			</IconTabFilter>
+			<IconTabSeparator icon=""/>
+			<IconTabFilter text="Attachments">
+				<Text text="Notes go here ..."/>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+</core:FragmentDefinition>

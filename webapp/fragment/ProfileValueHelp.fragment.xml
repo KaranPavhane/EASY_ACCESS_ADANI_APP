@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="profileVH"
+        title="Select Profile"
+        multiSelect="true"
+        search=".onProfileVHSearch"
+        liveChange=".onProfileVHLiveChange"
+        confirm=".onProfileVHConfirm"
+        items="{ProfileModel>/items}">
+
+        <StandardListItem
+            title="{ProfileModel>PROFILE}"
+        />
+    </SelectDialog>
+
+</core:FragmentDefinition>

@@ -1,0 +1,336 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    controllerName="com.new.prjt.znew_arm_prjt.controller.RequestDetails"
+    xmlns:goals="sap.uxap.sample.SharedBlocks.goals"
+    xmlns:u="sap.ui.unified"
+    xmlns:dnd="sap.ui.core.dnd"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:layout="sap.ui.layout"
+>
+<Dialog title="Request Information" contentHeight="100%"  contentWidth="100%">
+		<content>
+    <Page showHeader="false"  showFooter="true"
+    >
+        <content>
+            <uxap:ObjectPageLayout>
+             
+                <uxap:sections>
+                    <uxap:ObjectPageSection title="Request Details">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <f:SimpleForm
+                                        class="sapUiSizeCompact"
+                                        editable="false"
+                                        layout="ResponsiveGridLayout"
+                                        labelSpanXL="12"
+                                        labelSpanL="12"
+                                        labelSpanM="12"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="3"
+                                        columnsM="3"
+                                        singleContainerFullSize="false"
+                                    >
+                                        <f:content>
+                                            <core:Title text="Personal" />
+                                            <Label text="Request For" />
+                                            <Input
+                                                value="{UserDetailsModel>/IDENTIFIER}"
+                                                editable="false"
+                                            />
+                                            <Label text="User" />
+                                            <Input
+                                                value="{UserDetailsModel>/USER_ID}"
+                                                editable="false"
+                                            />
+                                            
+                                            <Label text="Business Process" />
+                                            <Input
+                                                value="{UserDetailsModel>/BPROC}"
+                                                editable="false"
+                                            />
+                                           
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                     <uxap:ObjectPageSection title="User Information">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <f:SimpleForm
+                                        class="sapUiSizeCompact"
+                                        editable="false"
+                                        layout="ResponsiveGridLayout"
+                                        labelSpanXL="12"
+                                        labelSpanL="12"
+                                        labelSpanM="12"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="3"
+                                        columnsM="3"
+                                        singleContainerFullSize="false"
+                                    >
+                                        <f:content>
+                                            <core:Title text="Personal" />
+                                            <Label text="First Name" />
+                                            <Input
+                                                value="{UserDetailsModel>/FIRST_NAME}"
+                                                editable="false"
+                                            />
+                                            <Label text="Last Name" />
+                                            <Input
+                                                value="{UserDetailsModel>/LAST_NAME}"
+                                                editable="false"
+                                            />
+                                            <Label text="Employee Type" />
+                                            <Input
+                                                value="{UserDetailsModel>/EMPTYPE}"
+                                                editable="false"
+                                            />
+                                            <core:Title
+                                                text="Reporting Details"
+                                            />
+                                            <Label text="Reporting Manager" />
+                                            <Input
+                                                value="{UserDetailsModel>/ZRMID}"
+                                                editable="false"
+                                            />
+                                            <Label text="Personal Number" />
+                                            <Input
+                                                value="{UserDetailsModel>/ZEMPID}"
+                                                editable="false"
+                                            />
+                                            <core:Title text="Department" />
+                                            <Label text="Department" />
+                                            <Input
+                                                value="{UserDetailsModel>/DEPARTMENT}"
+                                                editable="false"
+                                            />
+                                            <core:Title text="Communication" />
+                                             <!-- <Label text="Mobile Number" />
+                                            <Input
+                                                value="{UserDetailsModel>/PHONE}"
+                                                editable="false"
+                                            /> -->
+                                             <Label text="Email ID" />
+                                            <Input
+                                                value="{UserDetailsModel>/EMAIL}"
+                                                editable="false"
+                                            />
+                                            
+                                        </f:content>    
+                                    </f:SimpleForm>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                    <uxap:ObjectPageSection title="System/Landscape Information">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <Table
+                                        items="{UserDetailsModel>/UserToSystemNAV/results}"
+                                        class="sapUiSizeCompact"
+                                        visible="true"
+                                        inset="false"
+                                    >
+                                        <columns>
+                                              <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="UserID" />
+                                            </Column>
+                                            <Column width="10em">
+                                                <Text text="System" />
+                                            </Column>
+                                         
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="System Description" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Valid From" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Valid To" />
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem
+                                                vAlign="Middle"
+                                                type="Inactive"
+                                            >
+                                                <cells>
+                                                <Text text="{UserDetailsModel>USER_ID}" />
+                                                    <Text text="{UserDetailsModel>CONNECTOR}" />
+                                                      <Text text="{UserDetailsModel>RFCDOC1}" />
+                                                      <Text text="{UserDetailsModel>Valid_from}" />
+                                                      <Text text="{UserDetailsModel>Valid_To}" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                    <uxap:ObjectPageSection title="TCode and Org Information">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <Table
+                                        items="{UserDetailsModel>/UserToOrgTcodeNAV/results}"
+                                        class="sapUiSizeCompact"
+                                        visible="true"
+                                        inset="false"
+                                    >
+                                        <columns>
+                                            <Column width="10em">
+                                                <Text text="USER_ID" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Request" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Description" />
+                                            </Column>
+                                            </columns>
+                                        <items>
+                                            <ColumnListItem
+                                                vAlign="Middle"
+                                                type="Inactive"
+                                            >
+                                                <cells>
+                                                    <Text text="{UserDetailsModel>USER_ID}" />
+                                                    <Text text="{UserDetailsModel>Request}" />
+                                                    <Text
+                                                        text="{UserDetailsModel>Description}"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>            
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                    <!-- <uxap:ObjectPageSection title="Attachments">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <Table
+                                        items="{UserDetailsModel>}"
+                                        class="sapUiSizeCompact"
+                                        visible="true"
+                                        inset="false"
+                                    >
+                                        <columns>
+                                            <Column width="10em">
+                                                <Text text="USER_ID" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Request" />
+                                            </Column>
+                                            <Column
+                                                hAlign="Begin"
+                                                width="10em"
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                            >
+                                                <Text text="Description" />
+                                            </Column>
+                                            </columns>
+                                        <items>
+                                            <ColumnListItem
+                                                vAlign="Middle"
+                                                type="Inactive"
+                                            >
+                                                <cells>
+                                                    <Text text="{UserDetailsModel>USER_ID}" />
+                                                    <Text text="{UserDetailsModel>Request}" />
+                                                    <Text
+                                                        text="{UserDetailsModel>Description}"
+                                                    />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>            
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection> -->
+                    <!-- <uxap:ObjectPageSection title="Cancle Request" >
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                            <uxap:blocks>
+                            <HBox alignContent="Center" justifyContent="Center" width="100%"> <Button enabled="false" type="Reject" text="Cancel Request" press="onRequestCancle"/></HBox>
+                            </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection> -->
+                    
+                </uxap:sections>
+            </uxap:ObjectPageLayout>
+            
+        </content>
+    </Page>
+    </content>
+    <buttons>
+         <Button text="Close" press="onRequestInfoClose"/>
+		</buttons>
+    </Dialog>
+</core:FragmentDefinition>

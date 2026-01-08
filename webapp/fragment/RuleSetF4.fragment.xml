@@ -1,0 +1,19 @@
+<core:FragmentDefinition id="RuleSetF4"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog id="idRuleSetF4"
+		noDataText="No From Value Found"
+		title="Select From Value"
+		search="onSearchFromVal"
+		confirm="onRuleValueHelpDialogClose"
+		cancel="onRuleValueHelpDialogClose"
+		showClearButton="true"
+		items="{ path: '/F4Values' }">
+		<StandardListItem
+			title="{RULESETID}"
+			description="{DESCN}"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

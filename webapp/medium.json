@@ -1,0 +1,70 @@
+{
+    "milk": [
+        {
+            "Store Name": "Access in Systems",
+            "Revenue": 428214.13,
+            "Cost": 94383.52,
+            "Consumption": 76855.15368
+        },
+        {
+            "Store Name": "Account Inactive",
+            "Revenue": 1722148.36,
+            "Cost": 274735.17,
+            "Consumption": 310292.22
+        },
+        {
+            "Store Name": "ID Locked in Systems",
+            "Revenue": 1331176.706884,
+            "Cost": 233160.58,
+            "Consumption": 143432.18
+        },
+        {
+            "Store Name": "IDs near to expire",
+            "Revenue": 1878466.82,
+            "Cost": 235072.19,
+            "Consumption": 487910.26
+        },
+        {
+            "Store Name": "Active FFID Assignments",
+            "Revenue": 3326251.94,
+            "Cost": 582543.16,
+            "Consumption": 267185.27
+        }
+    ]
+}
+
+
+{
+    "RequestDetails": {
+        "proprety1": "Value1",
+        "property2": "value2",
+        "proprety3": "Value3",
+        "property4": "value4",
+        "proprety5": "Value5",
+        "property6": "value6",
+        "proprety7": "Value7",
+        "property8": "value8"
+    },
+    "UserDatils": {
+        "proprety1": "Value1",
+        "property2": "value2",
+        "proprety3": "Value3",
+        "property4": "value4",
+        "proprety5": "Value5",
+        "property6": "value6",
+        "proprety7": "Value7",
+        "property8": "value8"
+    },
+    "SystemInfo": [
+        {"System": "Value","Description": "value","IDExist": "value"},
+        {"System": "Value","Description": "value","IDExist": "value"}
+    ],
+    "TCodeInfo": [
+        {"Connector": "value","TCode": "value","TDesc": "value"},
+        {"Connector": "value","TCode": "value","TDesc": "value"}
+    ],
+    "OrgInfo": [
+        {"System": "value","OrgvalueDes": "value","Tcode": "value","value": "value"}
+        {"System": "value","OrgvalueDes": "value","Tcode": "value","value": "value"}
+    ]
+}

@@ -1,0 +1,46 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+	draggable="true"
+	resizable="true"
+		id="dialogRMValueHelp"
+		noDataText="No Reporting Manager found"
+		title="Select Reporting Manager"
+		search="handleSearchRMValueHelp"
+		confirm="handleCloseRMValueHelp"
+		cancel="handleCloseRMValueHelp"
+		items="{grac>/Manager_f4_helpSet}"
+		contentWidth="60%"
+		class="sapUiSizeCompact"
+		>
+		
+		<ColumnListItem>
+			<cells>
+	
+				<Text text="{grac>BNAME}" />
+				<Text text="{grac>NAME_FIRST}" />
+				<Text text="{grac>NAME_LAST}" />
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column>
+				<header>
+					<Text text="Username" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Firstname" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Lastname" />
+				</header>
+			</Column>
+			
+		
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

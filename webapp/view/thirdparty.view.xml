@@ -1,0 +1,1019 @@
+<mvc:View
+    xmlns="sap.m"
+    controllerName="com.new.prjt.znew_arm_prjt.controller.thirdParty"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns:dnd="sap.ui.core.dnd"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+>
+    <VBox class="sapUiSmallMargin">
+        <f:SimpleForm
+            class="sapUiSizeCompact"
+            id="SimpleFormChange480_Trial"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="4"
+            labelSpanL="4"
+            labelSpanM="4"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="0"
+            emptySpanL="0"
+            emptySpanM="0"
+            emptySpanS="0"
+            columnsXL="3"
+            columnsL="2"
+            columnsM="2"
+            singleContainerFullSize="false"
+        >
+            <f:content>
+                <core:Title text="Request Details" />
+                <Label text="Request For" />
+                <Select
+                    id="req_for"
+                    change="onSelectRequest"
+                    items="{RequestType>/}"
+                >
+                    <items>
+                        <core:Item
+                            text="{RequestType>text}"
+                            key="{RequestType>key}"
+                        />
+                    </items>
+                </Select>
+                <!-- <Label text="Contracting Company" id="labelContractCompany"/> -->
+                <!-- <Select forceSelection="false" id="cbContractCompany" change="onChangeContractCompany" items="{grac>/Contract_User_Org_DetailsSet}">
+					<items>
+						<core:Item text="{grac>CNORM}" key="{grac>CNORM}"/>
+					</items>
+				</Select> -->
+                <!-- <Input id="cbContractCompany" showValueHelp="true" change="oncallContractCompany" editable="true" required="true" valueHelpRequest="onValueHelpCC" liveChange="handleLiveChange"/> -->
+
+                <!-- <Label text="Existing User"></Label> -->
+                <!-- <CheckBox id="chbExistingUser" select="myOthers"></CheckBox> -->
+                <Label text="AD ID" />
+                <Input
+                    id="idADID"
+                    submit="onADIDSubmit"
+                    required="true"
+                />
+                <Label
+                    text="User"
+                    required="false"
+                />
+                <VBox>
+                    <Input
+                        id="idComboUser"
+                        showValueHelp="true"
+                        submit="onUserSubmit"
+                        editable="false"
+                        valueHelpOnly="false"
+                        valueHelpRequest="onValueHelpUsers"
+                    />
+                    <Text
+                        id="idName"
+                        visible="false"
+                    />
+                </VBox>
+                <Label
+                    text="Business Process"
+                    required="true"
+                />
+                <ComboBox
+                    required="true"
+                    change="BusinessChange"
+                    id="cbBusinessProcess"
+                    items="{grac>/Business_ProcessSet}"
+                >
+                    <items>
+                        <core:Item
+                            text="{grac>DESCN}"
+                            key="{grac>BPROC}"
+                        />
+                    </items>
+                </ComboBox>
+                <core:Title text="" />
+                <Label text="Access Requirement" />
+                <TextArea
+                    required="true"
+                    id="idNewText"
+                    maxLength="120"
+                    name=""
+                    liveChange="handleLiveChange"
+                    rows="5"
+                    cols="30"
+                    valueStateText="Please Enter Access Requirement"
+                />
+            </f:content>
+        </f:SimpleForm>
+        <Wizard
+            id="CreateProductWizard"
+            finishButtonText="Finish"
+            showNextButton="false"
+            currentStep="ProductTypeStep"
+            class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+        >
+            <WizardStep
+                id="ProductTypeStep"
+                nextStep="ProductInfoStep"
+                title="User Information"
+                activate="onActivate"
+            >
+                <MessageStrip
+                    showIcon="true"
+                    text="Enter your Personal Information. This information is saved in all the SAP systems and will be utilized for further communications such as new password, etc., Ensure you provide the right details!"
+                    class="sapUiMediumMarginTop"
+                />
+                <f:SimpleForm
+                    class="sapUiSizeCompact"
+                    id="SimpleFormChange480_12120Dual"
+                    editable="false"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="4"
+                    labelSpanL="4"
+                    labelSpanM="12"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="0"
+                    emptySpanL="0"
+                    emptySpanM="0"
+                    emptySpanS="0"
+                    columnsXL="3"
+                    columnsL="3"
+                    columnsM="3"
+                    singleContainerFullSize="false"
+                >
+                    <f:content>
+                        <core:Title text="Personal" />
+                        <Label
+                            required="true"
+                            text="First Name"
+                        />
+                        <Input
+                            width="85%"
+                            id="fanem"
+                            editable="false"
+                            value="{userInfoNew>/FIRST_NAME}"
+                            change="onChangeFNameOrLName"
+                            valueStateText="Please Enter First Name"
+                            name="AlphaNum"
+                        />
+                        <Label
+                            required="true"
+                            text="Last Name"
+                        />
+                        <Input
+                            width="85%"
+                            id="lname"
+                            editable="false"
+                            value="{userInfoNew>/LAST_NAME}"
+                            change="onChangeFNameOrLName"
+                            valueStateText="Please Enter Last Name"
+                            name="AlphaNum"
+                        />
+                        <Label
+                            required="true"
+                            text="Employee Type"
+                        />
+                        <!--<Input width="85%" id="idemptype" change="onValidatationCheck"  valueStateText="Please Enter Emp Type"  ></Input>-->
+                        <Select
+                            width="85%"
+                            id="idemptype"
+                            items="{ path: 'EmployeeType>/' }"
+                            valueStateText="Please Enter Emp Type"
+                            editable="false"
+                        >
+                            <core:Item
+                                key="{EmployeeType>key}"
+                                text="{EmployeeType>text}"
+                            />
+                        </Select>
+                        <core:Title text="Reporting Details" />
+                        <Label
+                            required="true"
+                            text="Reporting Manager"
+                        />
+                        <Input
+                            width="85%"
+                            id="managerID"
+                            editable="false"
+                            value="{userInfoNew>/ZRMID}"
+                            change="onValidatationCheck"
+                            valueStateText="Please Enter Reporting Manager"
+                            name="AlphaNum"
+                        />
+                        <Label
+                            required="false"
+                            text="Personal Number"
+                        />
+                        <Input
+                            width="85%"
+                            id="idPNumber"
+                            editable="{ExistingUser>/editable}"
+                            value="{userInfoNew>/ZEMPID}"
+                            change="onValidatationCheck"
+                            valueStateText="Please Enter Personal Number"
+                        />
+                        <core:Title text="Department" />
+                        <Label
+                            required="false"
+                            text="Department"
+                        />
+                        <Input
+                            width="85%"
+                            id="idDepart"
+                            editable="true"
+                            value="{userInfoNew>/DEPARTMENT}"
+                            change="onValidatationCheck"
+                            valueStateText="Please Enter Department "
+                        />
+                        <core:Title text="Communication" />
+                        <Label text="Mobile Number" />
+                        <!-- editable="{= ${userInfoNew>/PHONE}  === '' ? true: false}" -->
+                        <MaskInput
+                            mask="9999999999"
+                            width="85%"
+                            id="IDMOb"
+                            value="{userInfoNew>/PHONE}"
+                            editable="true"
+                            change="onValidatationCheck"
+                            valueStateText="Please Enter Mobile Number "
+                        />
+                        <Label
+                            required="true"
+                            text="Email"
+                        />
+                        <Input
+                            width="85%"
+                            id="idemail"
+                            value="{userInfoNew>/EMAIL}"
+                            name='Email'
+                            editable="false"
+                            change="onValidatationCheck"
+                            valueStateText="Please Enter Email"
+                        />
+                        <core:Title
+                            id="idNew3rdPary"
+                            text="3rd Party User Details"
+                        />
+                        <Label text="Alias" />
+                        <Input
+                            width="85%"
+                            id="idAlias"
+                            value="{userInfoNew>/USERALIAS}"
+                            change="onValidatationCheck"
+                            valueStateText="Please Enter Alias"
+                            editable="false"
+                        />
+                        <Label text="Adani Reporting MGR EMP ID" />
+                        <Input
+                            width="85%"
+                            id="idempid"
+                            value="{userInfoNew>/ZRMID}"
+                            editable="false"
+                            change="onValidatationCheck"
+                            valueStateText="Please Enter EMP ID"
+                            valueHelpRequest="onValueHelpRM"
+                            showValueHelp="true"
+                        />
+                        <Label text="Account Number" />
+                        <Input
+                            width="85%"
+                            id="idvendor"
+                            value=""
+                            editable="false"
+                            change="onValidatationCheck"
+                            valueStateText="Please Enter Vendor Number"
+                        />
+                    </f:content>
+                </f:SimpleForm>
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Button
+                            id="idNewButSysInfo"
+                            type="Emphasized"
+                            icon="sap-icon://arrow-bottom"
+                            text="Next:System/Landscape Information"
+                            press="onNextStep"
+                            textDirection="LTR"
+                        />
+                        <ToolbarSpacer />
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+            <WizardStep
+                id="ProductInfoStep"
+                nextStep="OptionalInfoStep"
+                title="System/Landscape Information"
+                activate="onActivate"
+            >
+                <MessageStrip
+                    showIcon="true"
+                    text="Drag and Drop the systems/landscape in which you are looking for access. Ensure you select the right systems to avoid any rejections. Incase if you have any questions, reachout to your Reporting manager before raising the request"
+                    class="sapUiMediumMarginTop"
+                />
+                <HBox renderType="Bare">
+                    <Table
+                        class="sapUiSizeCompact"
+                        id="table1"
+                        growing="true"
+                        growingThreshold="50"
+                        items="{ path: 'SysLandInfo>/SysLaData' }"
+                        beforeOpenContextMenu="onBeforeOpenContextMenu"
+                        mode="MultiSelect"
+                        selectionChange="onSelectionChangeSystem"
+                    >
+                        <contextMenu>
+                            <Menu>
+                                <MenuItem
+                                    text="Move to Selected Products"
+                                    press="moveToSelectedProductsTable"
+                                />
+                            </Menu>
+                        </contextMenu>
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="Available System" />
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <Text
+                                    class="myCustomText"
+                                    text="System"
+                                />
+                            </Column>
+                            <Column>
+                                <Text
+                                    class="myCustomText"
+                                    text="Description"
+                                />
+                            </Column>
+                        </columns>
+                        <ColumnListItem
+                            class="myCustomText"
+                            id="detailsListItem1"
+                        >
+                            <cells>
+                                <Text
+                                    text="{SysLandInfo>CONNECTOR}"
+                                    wrapping="false"
+                                />
+                                <Text
+                                    text="{SysLandInfo>RFCDOC1}"
+                                    wrapping="false"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </Table>
+                    <VBox
+                        justifyContent="Center"
+                        class="sapUiTinyMarginBeginEnd"
+                    />
+                    <Table
+                        class="sapUiSizeCompact"
+                        visible="false"
+                        id="table2"
+                        items="{ path: 'SeleSysLandInfo>/sleSysLaData' }"
+                    >
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="Selected System" />
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <Text
+                                    class="myCustomText"
+                                    text="System"
+                                />
+                            </Column>
+                            <Column>
+                                <Text
+                                    class="myCustomText"
+                                    text="Description"
+                                />
+                            </Column>
+                        </columns>
+                        <ColumnListItem class="myCustomText">
+                            <cells>
+                                <Text
+                                    text="{SeleSysLandInfo>CONNECTOR}"
+                                    wrapping="false"
+                                />
+                                <Text
+                                    text="{SeleSysLandInfo>RFCDOC1}"
+                                    wrapping="false"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </Table>
+                </HBox>
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Button
+                            id="idNewButTcodeInfo"
+                            type="Emphasized"
+                            icon="sap-icon://arrow-bottom"
+                            text="Next:Transaction code Information"
+                            press="onNextStep"
+                            textDirection="LTR"
+                        />
+                        <ToolbarSpacer />
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+            <WizardStep
+                id="OptionalInfoStep"
+                nextStep="PricingStep1"
+                title="Transaction code Information"
+                activate="onActivate"
+            >
+                <MessageStrip
+                    showIcon="true"
+                    text="You may either add a transaction code manually or upload a list of transaction codes using the template. Transaction codes can be system specific."
+                    class="sapUiMediumMarginTop"
+                />
+                <Text
+                    class="sapUiSmallMarginBottom"
+                    text=""
+                />
+                <Table
+                    id="idTcode"
+                    class="sapUiSizeCompact"
+                    items="{ path: 'TcodeModel>/TcodeData'}"
+                >
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title
+                                text=""
+                                level="H2"
+                            />
+                            <ToolbarSpacer />
+                            <Button
+                                id="idAddRowBut"
+                                enabled="{=${SeleSysLandInfo>/sleSysLaData/length} > 0 ? true:false}"
+                                icon="sap-icon://add"
+                                type="Emphasized"
+                                text="Row"
+                                press="addRow"
+                            />
+                            <Button
+                                icon="sap-icon://download"
+                                text="Download Template"
+                                type="Emphasized"
+                                press="onDownloadTemplate"
+                            />
+                            <u:FileUploader
+                                buttonText="Upload"
+                                iconOnly="false"
+                                buttonOnly="true"
+                                fileType="XLSX,xlsx"
+                                icon="sap-icon://upload"
+                                iconFirst="true"
+                                style="Emphasized"
+                                sameFilenameAllowed="true"
+                                change="onUploadTPTcode"
+                                enabled="{=${SeleSysLandInfo>/sleSysLaData/length} > 0 ? true:false}"
+                            />
+                        </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="Connector" />
+                        </Column>
+                        <Column>
+                            <Text text="Transaction Code" />
+                        </Column>
+                        <Column
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                        >
+                            <Text text="Transaction Description" />
+                        </Column>
+                        <Column width="50px">
+                            <Text text="" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <ComboBox
+                                    value="{TcodeModel>Connector}"
+                                    selectedKey="{TcodeModel>Connector}"
+                                    showSecondaryValues="true"
+                                    items="{ path: 'SeleSysLandInfo>/sleSysLaData'}"
+                                    change="onChnageConnector"
+                                >
+                                    <core:ListItem
+                                        key="{SeleSysLandInfo>CONNECTOR}"
+                                        text="{SeleSysLandInfo>CONNECTOR}"
+                                        additionalText="{SeleSysLandInfo>RFCDOC1}"
+                                    />
+                                </ComboBox>
+                                <Input
+                                    value="{TcodeModel>Tcode}"
+                                    tooltip="{TcodeModel>Tcode}"
+                                    maxLength="20"
+                                    valueState="{=${TcodeModel>TcodeDesc} ? 'None' :'Error'}"
+                                    change="onTcodeChange"
+                                    liveChange="handleLiveChange"
+                                    name="Tcode"
+                                    valueStateText="Please Enter Valid Tcode"
+                                    placeholder="Please Enter Valid Tcode"
+                                />
+                                <Input
+                                    value="{TcodeModel>TcodeDesc}"
+                                    editable="false"
+                                    change="onTDesc"
+                                />
+                                <Button
+                                    icon="sap-icon://delete"
+                                    press="onDeleteTocde"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Button
+                            id="idNewOrgNext"
+                            type="Emphasized"
+                            icon="sap-icon://arrow-bottom"
+                            text="Next:Organization value Information"
+                            press="onNextStep"
+                            textDirection="LTR"
+                        />
+                        <ToolbarSpacer />
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+            <WizardStep
+                id="PricingStep1"
+                nextStep="idNewRoleSearch"
+                title="Organization value Information"
+                activate="onActivate"
+            >
+                <MessageStrip
+                    showIcon="true"
+                    text="These organization values are picked up based on your current access. Incase, if you are requesting for the 1st time, you may select/enter the values manually. Ensure to fill-in all the fields to ensure you get access to the right roles."
+                    class="sapUiMediumMarginTop"
+                />
+                <Text
+                    class="sapUiSmallMarginBottom"
+                    text=""
+                />
+                <Table
+                    id="idTableOrg"
+                    class="sapUiSizeCompact"
+                    items="{ path: 'OrgTableModel>/OrgDataNormal', sorter: { path: 'Conn' }}"
+                    growing="true"
+                    growingThreshold="50"
+					visible="{ path: 'OrgTableModel>/aTcodes', formatter: '.showIfCICO' }"
+                >
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <ToolbarSpacer />
+                            <Button
+                                icon="sap-icon://refresh"
+                                type="Emphasized"
+                                text="Refresh"
+                                press="onORgRefresh"
+                            />
+                            <Button
+                                icon="sap-icon://download"
+                                text="Download Template"
+                                type="Emphasized"
+                                press="onDownloadTemplateOrg"
+                            />
+                            <u:FileUploader
+                                buttonText="Upload"
+                                iconOnly="false"
+                                buttonOnly="true"
+                                fileType="XLSX,xlsx"
+                                icon="sap-icon://upload"
+                                iconFirst="true"
+                                style="Emphasized"
+                                sameFilenameAllowed="true"
+                                change="onUploadTPOrg"
+                                enabled="{=${SeleSysLandInfo>/sleSysLaData/length} > 0 ? true:false}"
+                            />
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column hAlign="Center">
+                            <Text text="System" />
+                        </Column>
+                        <Column
+                            hAlign="Center"
+                            width="14em"
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                        >
+                            <Text text="Org value Description" />
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="Tcode" />
+                        </Column>
+                        <Column
+                            hAlign="Left"
+                            width="14em"
+                        >
+                            <Text text="Value" />
+                        </Column>
+                        <Column width="50px">
+                            <Text text="" />
+                        </Column>
+                        <!-- <Column width="50px">
+							<Text text=""></Text>
+						</Column> -->
+                    </columns>
+                    <items>
+                        <ColumnListItem
+                            vAlign="Middle"
+                            type="Inactive"
+                        >
+                            <cells>
+                                <Input
+                                    value="{OrgTableModel>Conn}"
+                                    editable="false"
+                                    tooltip="{OrgTableModel>Conn}"
+                                />
+                                <Input
+                                    value="{OrgTableModel>OrgVal}"
+                                    editable="false"
+                                    tooltip="{OrgTableModel>OrgVal}"
+                                />
+                                <Input
+                                    value="{OrgTableModel>Tcode}"
+                                    tooltip="{OrgTableModel>Tcode}"
+                                    editable="false"
+                                />
+                                <!-- <Input id="idOrgFromValue"  name="AlphaNum"  value="{OrgTableModel>FromOrg}" showValueHelp="true" valueHelpRequest="onOrgFrom"></Input>  liveChange="handleLiveChange" -->
+                                <HBox
+                                    width="100%"
+                                    renderType="Bare"
+                                >
+                                    <Input
+                                        id="idOrgFromValue"
+                                        name="AlphaNum"
+                                        liveChange="handleLiveChange"
+                                        tooltip="{OrgTableModel>FromOrg}"
+                                        value="{OrgTableModel>FromOrg}"
+                                        showValueHelp="false"
+                                        editable="false"
+                                        valueHelpRequest="onOrgFrom"
+                                    />
+                                    <Button
+                                        icon="sap-icon://value-help"
+                                        press="onOrgFrom"
+                                        enabled="{OrgTableModel>FromOrgValueHelp}"
+                                        class="sapUiTinyMarginBeginEnd"
+                                    />
+                                    <Button
+                                        icon="sap-icon://add"
+                                        press="addNewOrg"
+                                        type="Accept"
+                                        enabled="{OrgTableModel>FromOrgValueAdd}"
+                                    />
+                                </HBox>
+                                <Button
+                                    icon="sap-icon://delete"
+                                    type="Reject"
+                                    press="deleteNewOrgNew"
+                                    visible="{= ${OrgTableModel>isNew} === true }"
+                                    enabled="{OrgTableModel>FromOrgValueAdd}"
+                                />
+
+                                <!-- <Button icon="sap-icon://delete" press="deleteNewOrgNew" type="Accept"/> -->
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <Table
+                    id="idTableOrgCICO"
+                    class="sapUiSizeCompact"
+                    items="{ path: 'OrgTableModel>/OrgDataCICO', sorter: { path: 'Conn' }}"
+                    growing="true"
+                    growingThreshold="50"
+					visible="{ path: 'OrgTableModel>/OrgDataCICO', formatter: '.hasItems' }"
+                >
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <ToolbarSpacer />
+                            <Button
+                                icon="sap-icon://refresh"
+                                type="Emphasized"
+                                text="Refresh"
+                                press="onORgRefresh"
+                            />
+                            <!-- <Button icon="sap-icon://download" text="Download Template" type="Emphasized" press="onDownloadTemplateOrg"/> -->
+                            <!-- <u:FileUploader buttonText="Upload" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx" icon="sap-icon://upload" iconFirst="true"
+								style="Emphasized" sameFilenameAllowed="true" change="onUploadTPOrg"  enabled="{=${SeleSysLandInfo>/sleSysLaData/length} > 0 ? true:false}"/>
+						 -->
+                            <Button
+                                icon="sap-icon://add"
+                                type="Emphasized"
+                                text="Add"
+                                press="onAddCICORow"
+                            />
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column hAlign="Center">
+                            <Text text="System" />
+                        </Column>
+                        <!-- <Column hAlign="Center" width="14em" minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Org value Description"/>
+						</Column> -->
+                        <Column hAlign="Center">
+                            <Text text="Tcode" />
+                        </Column>
+                        <!-- <Column hAlign="Left" width="14em">
+							<Text text="Value"/>
+						</Column>
+						<Column width="50px">
+							<Text text=""></Text>
+						</Column> -->
+                        <!-- <Column width="50px">
+							<Text text=""></Text>
+						</Column> -->
+
+                        <Column hAlign="Center">
+                            <Text text="Profile" />
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="Sub-Profile" />
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="Designation" />
+                        </Column>
+                        <Column
+                            width="50px"
+                            hAlign="Center"
+                        >
+                            <Text text="" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem
+                            vAlign="Middle"
+                            type="Inactive"
+                        >
+                            <cells>
+                                <Input
+                                    value="{OrgTableModel>Conn}"
+                                    editable="false"
+                                    tooltip="{OrgTableModel>Conn}"
+                                />
+                                <!-- <Input value="{OrgTableModel>OrgVal}" editable="false" tooltip="{OrgTableModel>OrgVal}" ></Input> -->
+                                <Input
+                                    value="{OrgTableModel>Tcode}"
+                                    tooltip="{OrgTableModel>Tcode}"
+                                    editable="false"
+                                />
+                                <!-- <Input id="idOrgFromValue"  name="AlphaNum"  value="{OrgTableModel>FromOrg}" showValueHelp="true" valueHelpRequest="onOrgFrom"></Input>  liveChange="handleLiveChange" -->
+                                <!-- <HBox width="100%" renderType="Bare">
+								<Input id="idOrgFromValueCICO"   name="AlphaNum" liveChange="handleLiveChange" tooltip="{OrgTableModel>FromOrg}" value="{OrgTableModel>FromOrg}" showValueHelp="false" editable="false" valueHelpRequest="onOrgFrom"/>
+								<Button icon="sap-icon://value-help" press="onOrgFrom"  enabled="{OrgTableModel>FromOrgValueHelp}" class="sapUiTinyMarginBeginEnd"></Button>
+								<Button icon="sap-icon://add" press="addNewOrg" type="Accept" enabled="{OrgTableModel>FromOrgValueAdd}" />
+								</HBox>
+								<Button icon="sap-icon://delete" type="Reject" press="deleteNewOrgNew" visible="{= ${OrgTableModel>isNew} === true }" enabled="{OrgTableModel>FromOrgValueAdd}"/> -->
+
+                                <!-- <Button icon="sap-icon://delete" press="deleteNewOrgNew" type="Accept"/> -->
+
+                                <Input
+                                    width="100%"
+                                    value="{OrgTableModel>Profile}"
+                                    showValueHelp="true"
+                                    valueHelpOnly="true"
+                                    editable="{OrgTableModel>Editable}"
+                                    valueHelpRequest="onProfileF4Help"
+                                    placeholder="Select Profile"
+                                />
+                                <Input
+                                    width="100%"
+                                    value="{OrgTableModel>SubProfile}"
+                                    placeholder="Select Sub-Profile"
+                                    showValueHelp="true"
+                                    valueHelpRequest="onSubProfileVH"
+                                    enabled="{OrgTableModel>Editable}"
+                                />
+                                <Input
+                                    width="100%"
+                                    value="{OrgTableModel>DESIGNTION}"
+                                    placeholder="Select Designation(s)"
+                                    showValueHelp="true"
+                                    valueHelpOnly="true"
+                                    enabled="{OrgTableModel>Editable}"
+                                    valueHelpRequest="onDesignationVH"
+                                />
+                                <Button
+                                    icon="sap-icon://delete"
+                                    type="Reject"
+                                    press="onDeleteCICORow"
+                                    visible="{= ${OrgTableModel>isNew} === true }"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Button
+                            id="idNextOrgVal"
+                            type="Emphasized"
+                            icon="sap-icon://arrow-bottom"
+                            text="Next:Attachments"
+                            press="onNextStep"
+                            textDirection="LTR"
+                        />
+                        <ToolbarSpacer />
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+            <WizardStep
+                id="PricingStep4"
+                nextStep="PricingStep5"
+                title="Attachments"
+                activate="onActivate"
+            >
+                <MessageStrip
+                    showIcon="true"
+                    text="Attach the files that are relavant to this request. For eg: Approval emails etc., either in PDF format or JPG Format. You need not attach the list of transaction codes again here."
+                    class="sapUiMediumMarginTop"
+                />
+                <Text
+                    class="sapUiSmallMarginBottom"
+                    text=""
+                />
+                <Table
+                    class="sapUiSizeCompact"
+                    visible="true"
+                    inset="false"
+                    items="{AttInfoModelThird>/AttInfoData}"
+                >
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <ToolbarSpacer />
+                            <Button
+                                icon="sap-icon://add"
+                                type="Emphasized"
+                                text="Attach"
+                                press="getAttachDialog"
+                            />
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="Title" />
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="File Type" />
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="Added on" />
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="Added By" />
+                        </Column>
+                        <Column width="50px" />
+                    </columns>
+                    <items>
+                        <ColumnListItem
+                            vAlign="Middle"
+                            type="Inactive"
+                        >
+                            <cells>
+                                <Input
+                                    width="70%"
+                                    value="{AttInfoModelThird>tile}"
+                                    editable="false"
+                                />
+                                <Input
+                                    width="70%"
+                                    value="{AttInfoModelThird>type}"
+                                    editable="false"
+                                />
+                                <Text
+                                    width="70%"
+                                    text="{ path: 'AttInfoModelThird>addedOn', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"
+                                />
+                                <Input
+                                    width="70%"
+                                    value="{AttInfoModelThird>addedBy}"
+                                    editable="false"
+                                />
+                                <Button
+                                    icon="sap-icon://delete"
+                                    press="deleteRowRole"
+                                    type="Reject"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Button
+                            id="idNextAttach"
+                            type="Emphasized"
+                            icon="sap-icon://arrow-bottom"
+                            text="Next:Request Submission"
+                            press="onNextStep"
+                            textDirection="LTR"
+                        />
+                        <ToolbarSpacer />
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+            <WizardStep
+                id="PricingStep5"
+                title="Review Request"
+                activate="onActivate"
+            >
+                <MessageStrip
+                    showIcon="true"
+                    text="Review your request here before submitting it. We have consolidated all your requirement in a single screen for you to quickly review before the actual submission. Once the request is submitted, it will be approved by various approvers. You will be notified at every stage."
+                    class="sapUiMediumMarginTop"
+                />
+                <ToolbarSpacer />
+                <Button
+                    icon="sap-icon://refresh"
+                    type="Emphasized"
+                    text="Refresh Request Submission"
+                    press="onNextStep"
+                />
+                <f:SimpleForm
+                    class="sapUiSizeCompact"
+                    id="SimpleFoefefsdfrmChange480_Trial1"
+                    editable="false"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="4"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="0"
+                    emptySpanL="0"
+                    emptySpanM="0"
+                    emptySpanS="0"
+                    columnsXL="2"
+                    columnsL="2"
+                    columnsM="2"
+                    singleContainerFullSize="false"
+                >
+                    <f:content>
+                        <core:Title text="User Review" />
+                        <Label text="Request raised by" />
+                        <Text text="{navModel>/oResult/user_id}" />
+                        <Label text="Request raised for" />
+                        <Text id="idReqRaisedFor" />
+                        <Label text="Tcodes" />
+                        <Text id="idTcodesList" />
+                        <core:Title text="" />
+                        <Label text="Firstname" />
+                        <Text
+                            id="txtFnameReviewRequest"
+                            text="{userInfoNew>/FIRST_NAME}"
+                        />
+                        <Label text="Lastname" />
+                        <Text
+                            id="txtLnameReviewRequest"
+                            text="{userInfoNew>/LAST_NAME}"
+                        />
+                    </f:content>
+                </f:SimpleForm>
+                <f:SimpleForm class="sapUiSizeCompact">
+                    <Toolbar width="100%">
+                        <Label
+                            id="lblFisdsleNrgrame"
+                            text=""
+                            class="filename"
+                        />
+                        <ToolbarSpacer />
+                        <Button
+                            type="Accept"
+                            icon="sap-icon://complete"
+                            text="Submit"
+                            press="onSubmit"
+                            textDirection="LTR"
+                        />
+                        <Button
+                            type="Reject"
+                            icon="sap-icon://cancel"
+                            text="Cancel"
+                            textDirection="LTR"
+                            press="onCancel1"
+                        />
+                    </Toolbar>
+                </f:SimpleForm>
+            </WizardStep>
+        </Wizard>
+    </VBox>
+</mvc:View>

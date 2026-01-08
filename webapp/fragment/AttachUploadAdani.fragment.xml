@@ -1,0 +1,19 @@
+<core:FragmentDefinition controllerName="inforUI.controller.Upload" xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="Upload Attachment">
+		<content>
+			<form:SimpleForm>
+				<form:content>
+					<VBox>
+						<Label text="Select file"></Label>
+						<u:FileUploader id="idfileUploader" useMultipart="false" multiple="true" sameFilenameAllowed="true" buttonText="" change="onFileSelect"
+							placeholder="Choose an Attachment" fileType="css,html,htm,txt,rtx,xml,gif,ief,jpeg,jpg,jpe,xwd,tiff,tif,bmp,ico,pdf,doc,docx,ppt,pptx,png,cvv,xls,xlsx,xlt,csv,bmp,xlc,xla,xps,eml,msg" style="Emphasized"></u:FileUploader>
+					</VBox>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+		<buttons>
+		<Button text="Upload" press="onAttachUpload"/>
+         <Button text="Cancel" press="onAttachUploadCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar">
+	<Dialog title="Select an Employee">
+		<VBox>
+			<HBox>
+				<!--<fb:FilterBar id="idFilterBar" reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true"></fb:FilterBar>-->
+				<Table id="idList" width="50%">
+					<!--<headerToolbar>-->
+					<!--	<Toolbar>-->
+					<!--		<Title text="Employee Details"></Title>-->
+					<!--		<ToolbarSpacer></ToolbarSpacer>-->
+					<!--		<ComboBox items="{/aColumns}" selectionChange="onCBSel">-->
+					<!--			<core:Item text="{column}"></core:Item>-->
+					<!--		</ComboBox>-->
+					<!--		<SearchField width="30%" liveChange="onSearch"></SearchField>-->
+					<!--		<Button icon="sap-icon://sort-ascending" press="onButAsc"></Button>-->
+					<!--		<Button icon="sap-icon://sort-descending" press="onButDesc"></Button>-->
+					<!--	</Toolbar>-->
+					<!--</headerToolbar>-->
+					<columns>
+						<Column>
+							<Text text="System"></Text>
+						</Column>
+						<Column>
+							<Text text="Description"></Text>
+						</Column>
+						<Column>
+							<Text text="Application Type"></Text>
+						</Column>
+					</columns>
+					<!--<items>-->
+					<!--	<ColumnListItem>-->
+					<!--		<cells>-->
+					<!--			<Text text="{empid}"></Text>-->
+					<!--			<Text text="{empname}"></Text>-->
+					<!--			<Text text="{empdesign}"></Text>-->
+					<!--			<Text text="{empskill}"></Text>-->
+					<!--			<Text text="{emailid}"></Text>-->
+					<!--			<Text text="{emploc}"></Text>-->
+					<!--		</cells>-->
+					<!--	</ColumnListItem>-->
+					<!--</items>-->
+				</Table>
+			</HBox>
+			
+		</VBox>
+		<endButton>
+			<Button text="Close" type="Emphasized" press="onButClose"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,22 @@
+<core:FragmentDefinition id="F4"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog id="idF4"
+	draggable="true"
+	resizable="true"
+		noDataText="No From Value Found"
+		title="Select From Value"
+		search="onSearchConnector"
+		confirm="onConnectorClose"
+		cancel="onConnectorClose"
+		showClearButton="true"
+		items="{
+			path: 'grac>/Connector_f4_helpSet'
+		}">
+		<StandardListItem
+			title="{grac>RFCDEST}"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

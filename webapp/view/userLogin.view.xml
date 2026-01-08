@@ -1,0 +1,28 @@
+<mvc:View xmlns:imageeditor="sap.suite.ui.commons.imageeditor" controllerName="com.new.prjt.znew_arm_prjt.controller.userLogin" xmlns:v="com.new.prjt.znew_arm_prjt.control" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:fm="sap.f"
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:card="sap.f.cards">
+	<Shell id="shell" appWidthLimited="false">
+		<App id="app">
+			<pages >
+				<Page id="page" showHeader="false" backgroundDesign="Transparent" title="{i18n>title}" enableScrolling="false">
+					<content>
+						<html:div class="body"></html:div>
+						<html:div class="grad"></html:div>
+						<html:div class="header">
+							<html:div>Easy Access</html:div>
+						</html:div>
+						<l:VerticalLayout>
+						<Image src=""/>
+						</l:VerticalLayout>
+						
+			
+						<!-- <html:div class="login">
+							<html:input type="text" id="link0" placeholder="username" name="user"></html:input>
+							<html:input type="password" id="link2" placeholder="password" name="password"></html:input>
+							<html:input type="button" id="link1" onclick="myFunction()" value="Login"></html:input>
+						</html:div> -->
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

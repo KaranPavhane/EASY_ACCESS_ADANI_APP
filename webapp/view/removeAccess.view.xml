@@ -1,0 +1,204 @@
+<mvc:View xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" height="100%"
+	controllerName="com.new.prjt.znew_arm_prjt.controller.removeAccess" xmlns:u="sap.ui.unified" xmlns:t="sap.ui.table" xmlns:dnd="sap.ui.core.dnd"
+	displayBlock="true" xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm class="sapUiSizeCompact" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+			singleContainerFullSize="false">
+			<f:content>
+				<core:Title text="Request Details"/>
+				<Label text="Request For"/>
+				<Select id="idComboUserType" change="onUserTypeChng">
+					<core:Item key="self" text="Self"/>
+					<core:Item key="others" text="Other User"/>
+				</Select>
+				<Label text="User" required="true"/>
+				<VBox>
+					<Input id="idComboUser1" showValueHelp="true" submit="onUserSubmit" editable="false"  valueHelpRequest="onValueHelpUsers" valueHelpOnly="true"/>
+					<Text id="idNameRem"></Text>
+				</VBox>
+				<core:Title text=" "/>
+				<Label text=" Description"/>
+				<TextArea required="true" id="idRemText" name="AlphaNum" liveChange="" valueStateText="Please Enter Access Requirement" maxLength="120" rows="3" cols="30"/>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+	<Wizard id="CreateProductWizardId2" finishButtonText="Finish" showNextButton="false" currentStep="ProductTypeStep123"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
+		<WizardStep id="ProductTypeStep123" nextStep="ProductTypeStep3" title="User Information" activate="onActivate">
+			<MessageStrip showIcon="true"
+				text="Enter your Personal Information. This information is saved in all the SAP systems and will be utilized for further communications such as new password, etc., Ensure you provide the right details!"
+				class="sapUiMediumMarginTop"/>
+			<f:SimpleForm class="sapUiSizeCompact" id="SimpleFormChange480_1212uku0Dual12" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4"
+				labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+				columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">
+				<f:content>
+					<core:Title text="Personal"/>
+					<Label required="true" text="First Name"/>
+					<Input id="idRemFName" value="{userInfoRem>/FIRST_NAME}" editable="false" width="85%" change="onValidatationCheck"
+						valueStateText="Please Enter First Name"></Input>
+					<Label required="true" text="Last Name"/>
+					<Input id="idRemLName" value="{userInfoRem>/LAST_NAME}" editable="false" width="85%" change="onValidatationCheck"
+						valueStateText="Please Enter Last Name"></Input>
+					<Label required="true" text="Employee Type"/>
+					<Select width="85%" id="idRemEmpType" items="{ path: 'EmployeeTypeMod>/' }" valueStateText="Please Enter Emp Type" editable="true"
+						change="onValidatationCheck" >
+						<core:Item key="{EmployeeTypeMod>key}" text="{EmployeeTypeMod>text}"/>
+					</Select>
+					<core:Title text="Reporting Details"/>
+					<Label required="true" text="Reporting Manager"/>
+					<Input id="idRemRepMana" value="{userInfoRem>/ZRMID}" editable="false" width="85%" change="onValidatationCheck"
+						valueStateText="Please Enter Reporting Manager "></Input>
+					<Label text="Personal Number"/>
+					<Input id="idRemPNumber" value="{userInfoRem>/ZEMPID}" editable="false" width="85%" change="onValidatationCheck"
+						valueStateText="Please Enter Personal Number "></Input>
+					<core:Title text="Department"/>
+					<Label required="false" text="Department"/>
+					<Input id="idRemDept" value="{userInfoRem>/DEPARTMENT}" editable="true" width="85%" change="onValidatationCheck"
+						valueStateText="Please Enter Department "></Input>
+					<core:Title text="Communication"/>
+					<Label text="Mobile Number"/>
+					 <!-- editable="{=${userInfoRem>/PHONE} === '' ? true: false}" -->
+				<MaskInput mask = "9999999999"  id="idRemMNumber" value="{userInfoRem>/PHONE}"  width="85%" change="onValidatationCheck"
+						valueStateText="Please Enter Mobile Number "></MaskInput>
+					<Label required="true" text="Email"/>
+					<Input id="idRemEmail" value="{userInfoRem>/EMAIL}" editable="false" width="85%" change="onValidatationCheck"
+						valueStateText="Please Enter Email"></Input>
+					<core:Title id="idRemove3rdPary"/>
+					<Label text="Adani Reporting MGR EMP ID"/>
+					<Input visible="false" id="idRemEmpId" value="{userInfoRem>/ZRMID}" editable="false" width="85%" change="onValidatationCheck"
+						valueStateText="Please Enter EMP ID"></Input>
+					<Label text="Vendor Name"/>
+					<Input visible="false" id="idRemVenNum" value="{userInfoRem>/VENDORNAME}" editable="true" width="85%" change="onValidatationCheck"
+						valueStateText="Please Enter Vendor Number"></Input>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm class="sapUiSizeCompact">
+				<Toolbar width="100%">
+					<Button id="idRemButAccInfo" type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Access Information" press="onNextStepRemoveAccess"
+						textDirection="LTR"/>
+					<ToolbarSpacer/>
+				</Toolbar>
+			</f:SimpleForm>
+		</WizardStep>
+		<WizardStep id="ProductTypeStep3" title="Access Information" activate="onActivate">
+			<Table id="idRemAccTable" items="{ path: '/accessData'}" class="sapUiSizeCompact" visible="true" mode="MultiSelect" inset="false"
+				selectionChange="onRemAccTableChn" itemPress="onRemAccTableItemPress">
+				<columns>
+					<Column width="11rem">
+						<Text text="User"/>
+					</Column>
+					<Column width="11rem">
+						<Text text="System"/>
+					</Column>
+					<Column hAlign="Center" width="11rem">
+						<Text text="System Description"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle" type="Inactive">
+						<cells>
+							<Text text="{USER_ID}"/>
+							<Text text="{CONNECTOR}"/>
+							<Text text="{RFCDOC1}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<f:SimpleForm class="sapUiSizeCompact">
+				<Toolbar width="100%">
+					<Button id="idRemUpdSelBut" type="Emphasized" text="Update Access Information" press="onUpdateSeleTable" textDirection="LTR" visible="false"/>
+				</Toolbar>
+			</f:SimpleForm>
+			<f:SimpleForm class="sapUiSizeCompact">
+				<Toolbar width="100%">
+					<Button id="idRemButReq" type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Attachments" press="onNextStepRemoveAccess"
+						textDirection="LTR"/>
+					<ToolbarSpacer/>
+				</Toolbar>
+			</f:SimpleForm>
+		</WizardStep>
+		<WizardStep id="idRemoveAttach" nextStep="PricingStep22" title="Attachments" activate="onActivate">
+			<MessageStrip showIcon="true"
+				text="Attach the files that are relavant to this request. For eg: Approval emails etc., either in PDF format or JPG Format. You need not attach the list of transaction codes again here."
+				class="sapUiMediumMarginTop"/>
+			<Text class="sapUiSmallMarginBottom" text=""/>
+			<Table class="sapUiSizeCompact" visible="true" inset="false" items="{RemAttInfoModel>/AttInfoData}">
+				<headerToolbar>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://add" type="Emphasized" text="Attach" press="getAttachDialog"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="Title"/>
+					</Column>
+					<Column hAlign="Center">
+						<Text text="File Type"/>
+					</Column>
+					<Column hAlign="Center">
+						<Text text="Added on"/>
+					</Column>
+					<Column hAlign="Center">
+						<Text text="Added By"/>
+					</Column>
+					<Column width="50px"/>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle" type="Inactive">
+						<cells>
+							<Input width="70%" value="{RemAttInfoModel>tile}"/>
+							<Input width="70%" editable="false" value="{RemAttInfoModel>type}"/>
+							<Text width="70%"
+								text="{ path: 'RemAttInfoModel>addedOn', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"/>
+							<Input width="70%" editable="false" value="{RemAttInfoModel>addedBy}"/>
+							<Button icon="sap-icon://delete" press="deleteRowRole" type="Reject"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<f:SimpleForm class="sapUiSizeCompact">
+				<Toolbar width="100%">
+					<Button id="idNextAttach" type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Lock User" press="onNextStepRemoveAccess" textDirection="LTR"/>
+					<ToolbarSpacer/>
+				</Toolbar>
+			</f:SimpleForm>
+		</WizardStep>
+		<WizardStep id="PricingStep22" title="Request Submission" activate="onActivate">
+			<MessageStrip showIcon="true"
+				text="Review your request here before submitting it. We have consolidated all your requirement in a single screen for you to quickly review before the actual submission. Once the request is submitted, it will be approved by various approvers. You will be notified at every stage."
+				class="sapUiMediumMarginTop"/>
+			<Table id="idRemAccSelTable" items="{ path: '/accessSelData'}" class="sapUiSizeCompact" visible="true" mode="None" inset="false">
+				<columns>
+					<Column hAlign="Center" width="12rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Username"/>
+					</Column>
+					<Column width="11rem">
+						<Text text="System"/>
+					</Column>
+					<Column hAlign="Center" width="12rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="System Description"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle" type="Inactive">
+						<cells>
+							<Text text="{USER_ID}"/>
+							<Text text="{CONNECTOR}"/>
+							<Text text="{RFCDOC1}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<f:SimpleForm class="sapUiSizeCompact">
+				<Toolbar width="100%">
+					<Label id="lblFisdsleNrgrame34" text="" class="filename"/>
+					<ToolbarSpacer/>
+					<Button type="Accept" icon="sap-icon://complete" text="Submit" press="onSubmitRem" textDirection="LTR"/>
+					<Button type="Reject" icon="sap-icon://cancel" text="Cancel" textDirection="LTR" press="onCancelRem"/>
+				</Toolbar>
+			</f:SimpleForm>
+		</WizardStep>
+	</Wizard>
+</mvc:View>

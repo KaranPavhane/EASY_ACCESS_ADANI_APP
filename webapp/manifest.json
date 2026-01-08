@@ -1,0 +1,208 @@
+{
+	"_version": "1.11.0",
+	"sap.app": {
+		"id": "com.new.prjt.znew_arm_prjt",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZARM_UI_LOGIN_SRV": {
+				"uri": "/sap/opu/odata/sap/ZARM_UI_LOGIN_SRV/?saml2=disabled",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZARM_UI_LOGIN_SRV/metadata.xml"
+				}
+			},
+			"ZGRAC_USER_ACCESS_MANAGE_SRV": {
+				"uri": "/sap/opu/odata/sap/ZGRAC_USER_ACCESS_MANAGE_SRV/?saml2=disabled",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZGRAC_USER_ACCESS_MANAGE_SRV/metadata.xml"
+				}
+			},
+			"ZGRAC_REQ_DETAIL_SRV": {
+				"uri": "/sap/opu/odata/sap/ZGRAC_REQ_DETAIL_SRV/?saml2=disabled",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZGRAC_REQ_DETAIL_SRV/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"supportedThemes": [
+			"sap_fiori_3",
+			"sap_bluecrystal",
+			"sap_belize"
+		],
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "com.new.prjt.znew_arm_prjt.view.userLogin",
+			"type": "XML",
+			"async": true,
+			"id": "userLogin"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.1",
+			"libs": {
+				"sap.collaboration": {},
+				"sap.m": {},
+				"sap.tnt": {
+					"minVersion": ""
+				},
+				"sap.ui.comp": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.new.prjt.znew_arm_prjt.i18n.i18n"
+				}
+			},
+			"userLogin": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"disableHeadRequestForToken": true
+				},
+				"dataSource": "ZARM_UI_LOGIN_SRV",
+				"preload": true
+			},
+			"grac": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"disableHeadRequestForToken": false
+				},
+				"dataSource": "ZGRAC_USER_ACCESS_MANAGE_SRV",
+				"preload": true
+			},
+			"requestDetails": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"disableHeadRequestForToken": false
+				},
+				"dataSource": "ZGRAC_REQ_DETAIL_SRV",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			],
+			"js": [
+				{
+					"uri": "lib/xlsx.full.min.js"
+				}
+			],
+			"image": [
+				{
+					"uri": "image/city1.jpg"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.new.prjt.znew_arm_prjt.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "RouteView1",
+					"pattern": "RouteView1",
+					"target": [
+						"TargetView1"
+					]
+				},
+				{
+					"name": "Dashboard",
+					"pattern": "Dashboard",
+					"target": [
+						"dashboard"
+					]
+				},
+				{
+					"name": "DialogF4User",
+					"pattern": "DialogF4User",
+					"target": [
+						"DialogF4User"
+					]
+				}
+			],
+			"targets": {
+				"TargetView1": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "userLogin",
+					"viewName": "userLogin"
+				},
+				"dashboard": {
+					"transition": "slide",
+					"viewType": "XML",
+					"viewName": "Dashboard"
+				},
+				"DialogF4User": {
+					"transition": "slide",
+					"viewType": "XML",
+					"viewName": "DialogF4User"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zarmv1s3",
+		"_version": "1.1.0"
+	}
+}

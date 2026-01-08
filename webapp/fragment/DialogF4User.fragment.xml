@@ -1,0 +1,151 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" height="100%"
+	xmlns:t="sap.ui.table" xmlns:dnd="sap.ui.core.dnd" displayBlock="true" xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap">
+	<Toolbar class="sapUiSizeCompact" id="toolbar1">
+		<ToolbarSpacer/>
+		<Title text="Get Authorization"/>
+		<ToolbarSpacer/>
+	</Toolbar>
+	<uxap:ObjectPageLayout class="sapUiSizeCompact" backgroundDesignAnchorBar="Transparent" showTitleInHeaderContent="true">
+		<uxap:headerTitle>
+			<uxap:ObjectPageDynamicHeaderTitle backgroundDesign="Transparent">
+				<!--<uxap:expandedHeading>-->
+				<!--	<Title id="objectTitle" text="" wrapping="true"/>-->
+				<!--</uxap:expandedHeading>-->
+				<!--<uxap:expandedContent>-->
+				<!--	<Text text="All Cards (TBD)"/>-->
+				<!--</uxap:expandedContent>-->
+				<uxap:actions><Button icon="sap-icon://close-command-field" press="onBack" text="Back"/>
+					<Button icon="sap-icon://home" press="onHome" text="Home"/></uxap:actions>
+			</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle>
+	</uxap:ObjectPageLayout>
+	<VBox class="sapUiSmallMargin">
+		<Wizard id="idAuth" showNextButton="false" finishButtonText="Finish">
+			<!--<WizardStep id="idAuthOrg" nextStep="idAuthRoles" title="Organization value Information" activate="onActivate">-->
+			<!--	<Table id="idAuthTableOrg" class="sapUiSizeCompact" items="{ path: 'AuthOrgTableModel>/OrgData'}">-->
+			<!--		<columns>-->
+			<!--			<Column>-->
+			<!--				<Text text="Org Level"/>-->
+			<!--			</Column>-->
+			<!--			<Column hAlign="Center" width="12em" minScreenWidth="Tablet" demandPopin="true">-->
+			<!--				<Text text="Org value Description"/>-->
+			<!--			</Column>-->
+			<!--			<Column hAlign="Center">-->
+			<!--				<Text text="Tcode"/>-->
+			<!--			</Column>-->
+			<!--			<Column hAlign="Center">-->
+			<!--				<Text text="From Value"/>-->
+			<!--			</Column>-->
+			<!--			<Column hAlign="Center">-->
+			<!--				<Text text="To Value"/>-->
+			<!--			</Column>-->
+			<!--		</columns>-->
+			<!--		<items>-->
+			<!--			<ColumnListItem vAlign="Middle" type="Inactive">-->
+			<!--				<cells>-->
+			<!--					<Input value="{AuthOrgTableModel>OrgLevel}" editable="false"></Input>-->
+			<!--					<Input value="{AuthOrgTableModel>OrgVal}" editable="false"></Input>-->
+			<!--					<Input value="{AuthOrgTableModel>Tcode}" editable="false"></Input>-->
+			<!--					<Input id="idAuthOrgFromValue" value="{AuthOrgTableModel>FromOrg}" showValueHelp="true" valueHelpRequest="onOrgFromAuth"></Input>-->
+			<!--					<Input value="{AuthOrgTableModel>ToOrg}" showValueHelp="true" valueHelpRequest="onOrgTo"></Input>-->
+			<!--				</cells>-->
+			<!--			</ColumnListItem>-->
+			<!--		</items>-->
+			<!--	</Table>-->
+			<!--	<f:SimpleForm class="sapUiSizeCompact">-->
+			<!--		<Toolbar width="100%">-->
+			<!--			<Button id="idButAuthOrg" type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Role Information" press="onAuthNextStep" textDirection="LTR"/>-->
+			<!--			<ToolbarSpacer/>-->
+			<!--		</Toolbar>-->
+			<!--	</f:SimpleForm>-->
+			<!--</WizardStep>-->
+			<WizardStep id="idAuthRoles" nextStep="idAuthSubmit" title="Role Information" activate="onActivate">
+				<Table id="idAuthtableRole" class="sapUiSizeCompact" items="{AuthRoleInfoModel>/RolInfoData}" inset="false" mode="None">
+					<columns>
+						<Column>
+							<Text text="System"/>
+						</Column>
+						<!--<Column hAlign="Center" width="12em" minScreenWidth="Tablet" demandPopin="true">-->
+						<!--	<Text text="System Description"/>-->
+						<!--</Column>-->
+						<Column hAlign="Center">
+							<Text text="Tcode"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="Role"/>
+						</Column>
+						<!--<Column hAlign="Center">-->
+						<!--	<Text text="Description"/>-->
+						<!--</Column>-->
+						<!--<Column hAlign="Center">-->
+						<!--	<Text text="Role Type"/>-->
+						<!--</Column>-->
+					</columns>
+					<items>
+						<ColumnListItem vAlign="Middle" type="Inactive">
+							<cells>
+								<Input width="100%" value="{AuthRoleInfoModel>System}" editable="false"/>
+								<!--<Input width="70%" value="{AuthRoleInfoModel>sysDesc}"/>-->
+								<Input width="100%" value="{AuthRoleInfoModel>tCode}" editable="false"/>
+								<Input width="100%" value="{AuthRoleInfoModel>role}" editable="false"/>
+								<!--<Input width="70%" value="{AuthRoleInfoModel>Desc}"/>-->
+								<!--<Input width="70%" value="{AuthRoleInfoModel>roleType}"/>-->
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<f:SimpleForm class="sapUiSizeCompact">
+					<Toolbar width="100%">
+						<Button id="idButtonSU53Review" type="Emphasized" icon="sap-icon://arrow-bottom" text="Next:Request Submission" press="onAuthNextStep" textDirection="LTR"/>
+						<ToolbarSpacer/>
+					</Toolbar>
+				</f:SimpleForm>
+			</WizardStep>
+			<WizardStep id="idAuthSubmit" title="Request Submission" activate="onActivate">
+				<Table id="idAuthTableSubmit" class="sapUiSizeCompact" items="{AuthRoleInfoModel>/RolInfoData}" visible="true" mode="None" inset="false">
+					<columns>
+						<Column >
+							<Text text="System"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="Tcode"/>
+						</Column>
+						<Column>
+							<Text text="Role"/>
+						</Column>
+						<!--<Column>-->
+						<!--	<Text text="Role Description"/>-->
+						<!--</Column>-->
+						
+						<!--<Column >-->
+						<!--	<Text text="System Descrition"/>-->
+						<!--</Column>-->
+						<!--<Column >-->
+						<!--	<Text text="Role Type"/>-->
+						<!--</Column>-->
+					</columns>
+					<items>
+						<ColumnListItem vAlign="Middle" type="Inactive">
+							<cells>
+								<Input width="100%" value="{AuthRoleInfoModel>System}" editable="false"/>
+								<Input width="100%" value="{AuthRoleInfoModel>tCode}" editable="false"/>
+								<Input width="100%" value="{AuthRoleInfoModel>role}" editable="false"/>
+								<!--<Input width="70%" value="{AuthSubRoleInfoModel>Desc}"/>-->
+								<!--<Input width="70%" value="{AuthSubRoleInfoModel>sysDesc}"/>-->
+								<!--<Input width="70%" value="{AuthSubRoleInfoModel>roleType}"/>-->
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<f:SimpleForm class="sapUiSizeCompact">
+					<Toolbar width="100%">
+						<Label id="lfaf" text="" class="filename"/>
+						<ToolbarSpacer/>
+						<Button type="Accept" icon="sap-icon://complete" text="Submit" press="onAuthSubmit" textDirection="LTR"/>
+						<Button type="Reject" icon="sap-icon://cancel" text="Cancel" press="onSU53Cancel" textDirection="LTR"/>
+					</Toolbar>
+				</f:SimpleForm>
+			</WizardStep>
+		</Wizard>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,81 @@
+<mvc:View controllerName="com.new.prjt.znew_arm_prjt.controller.Dashboard" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" displayBlock="true"
+	height="100%" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onSideNavButtonPress">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+				<ToolbarSpacer width="20px"/>
+				<tnt:ToolHeaderUtilitySeparator/>
+				<ToolbarSpacer>
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
+					</layoutData>
+				</ToolbarSpacer>
+				<Text id="idrootTitle" text="SAP GRC Access Request"></Text>
+				<ToolbarSpacer>
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
+					</layoutData>
+				</ToolbarSpacer>
+				<Button id="obuttonUserName" text="{oUserModel>/oResult/fname}" iconFirst="false" icon="sap-icon://arrow-down" type="Transparent"
+					press="handleResponsivePopoverPress"/>
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent >
+			<tnt:SideNavigation expanded="true" selectedKey="{/selectedKey}" itemSelect=".showWarningOnItemSelect">
+				<tnt:NavigationList items="{path: '/navigation'}">
+					<tnt:NavigationListItem text="{title}" icon="{icon}" enabled="{enabled}" expanded="{expanded}" items="{items}" key="{key}" visible="{Visible}">
+						<tnt:NavigationListItem text="{title}" key="{key}" icon="{icon}" enabled="{enabled}" />
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<NavContainer id="pageContainer" initialPage="myAccess">
+				<pages>
+					<ScrollContainer id="myAccess" horizontal="false" vertical="true" height="100%">
+						<mvc:XMLView viewName="com.new.prjt.znew_arm_prjt.view.myAccess" />
+					</ScrollContainer>
+					<ScrollContainer id="welcome" horizontal="false" vertical="true" height="100%">
+					  <core:Fragment fragmentName="com.new.prjt.znew_arm_prjt.fragment.Welcome" type="XML"/>
+					</ScrollContainer>
+					<ScrollContainer id="delApp" horizontal="false" vertical="true" height="100%">
+						<core:Fragment fragmentName="com.new.prjt.znew_arm_prjt.fragment.deleApp" type="XML"/>
+					</ScrollContainer>
+
+					<!-- <ScrollContainer id="appInbox" horizontal="false" vertical="true" height="100%"> -->
+						<!-- <core:Fragment fragmentName="com.new.prjt.znew_arm_prjt.fragment.approvalInbox" type="XML"/> -->
+					<!-- </ScrollContainer> -->
+					<ScrollContainer id="newModifyReqstID" horizontal="false" vertical="true" height="100%">
+						<mvc:XMLView viewName="com.new.prjt.znew_arm_prjt.view.newModifyRequest" />
+					</ScrollContainer>
+					<ScrollContainer id="3rdPartyID" horizontal="false" vertical="true" height="100%">
+						<mvc:XMLView viewName="com.new.prjt.znew_arm_prjt.view.thirdParty" />
+					</ScrollContainer>
+					<ScrollContainer id="ModifyReqstID" horizontal="false" vertical="true" height="100%">
+						<mvc:XMLView viewName="com.new.prjt.znew_arm_prjt.view.modifyRequest" />
+					</ScrollContainer>
+					<ScrollContainer id="removeAccesID" horizontal="false" vertical="true" height="100%">
+						<mvc:XMLView viewName="com.new.prjt.znew_arm_prjt.view.removeAccess" />
+					</ScrollContainer>
+					<ScrollContainer id="fireFighterID1" horizontal="false" vertical="true" height="100%">
+						<mvc:XMLView viewName="com.new.prjt.znew_arm_prjt.view.FFAccess" />
+					</ScrollContainer>
+					<ScrollContainer id="reactivateID" horizontal="false" vertical="true" height="100%">
+						<core:Fragment fragmentName="com.new.prjt.znew_arm_prjt.fragment.reactivateUser" type="XML"/>
+					</ScrollContainer>
+					<ScrollContainer id="Auth" horizontal="false" vertical="true" height="100%">
+						<core:Fragment fragmentName="com.new.prjt.znew_arm_prjt.fragment.Auth" type="XML"/>
+					</ScrollContainer>
+					<ScrollContainer id="GetAuth" horizontal="false" vertical="true" height="100%">
+						<core:Fragment fragmentName="com.new.prjt.znew_arm_prjt.fragment.DialogF4User" type="XML"/>
+					</ScrollContainer>
+				</pages>
+			</NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+	</mvc:View>

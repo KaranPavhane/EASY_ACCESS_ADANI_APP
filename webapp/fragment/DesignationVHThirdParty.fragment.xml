@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <SelectDialog
+      id="DesignationVHThirdParty"
+      title="Select Designation"
+      items="{DesignationModel>/designations}"
+      search="onDesignationSearch"
+      confirm="onDesignationConfirm"
+      cancel="onDesignationCancel"
+      multiSelect="true"
+      rememberSelections="false">
+    <StandardListItem
+        title="{DesignationModel>DESIGNTION}"
+        type="Active"/>
+  </SelectDialog>
+</core:FragmentDefinition>

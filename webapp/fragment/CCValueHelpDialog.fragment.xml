@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:layout="sap.ui.layout" xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar">
+	<Dialog id="idUserHelpDialog" title="Select User">
+		<VBox>
+			<fb:FilterBar id="filterbar" reset="" search="handleSearchCCValueHelp" useToolbar="false" showGoOnFB="true">
+				<fb:filterItems>
+					<fb:FilterItem name="B" label="Search">
+						<fb:control>
+							<Input id="idCC" change="handleSearchCCValueHelp"/>
+						</fb:control>
+					</fb:FilterItem>
+				</fb:filterItems>	
+			</fb:FilterBar>
+			<Table id="idCCTable" inset="false" growing = "true" growingScrollToLoad = "true" growingThreshold ="100" threshold="50" 
+			items="{grac>/Contract_User_Org_DetailsSet}" mode="SingleSelectMaster"
+			 selectionChange="handleCloseCCValueHelp"
+				itemPress="handleCloseCCValueHelp">
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Organization ID "/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Organization Name"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<Text text="{grac>CNORM}"/>
+							<Text text="{grac>CORG_LNG}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<!--	</f:content>-->
+			<!--</f:DynamicPage>-->
+		</VBox>
+		<endButton>
+			<Button text="Close" press="onCloseCCPopup"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
